@@ -80,7 +80,6 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<finalname>miniproject-rakha</finalname>
 	</build>
 
 </project>
