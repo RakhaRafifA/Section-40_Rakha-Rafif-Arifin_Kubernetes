@@ -45,13 +45,13 @@ public class UserController {
     }
 
     @PutMapping("/{user_id}")
-    public ResponseEntity<User> updateUser(@PathVariable("/user_id") Long user_id, @RequestBody User user){
+    public ResponseEntity<User> updateUser(@PathVariable("user_id") Long user_id, @RequestBody User user){
         userService.updateUser(user_id, user);
         return new ResponseEntity<>(userService.getUserById(user_id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{user_id}")
-    public ResponseEntity<User> deleteUser(@PathVariable("/user_id") Long user_id){
+    public ResponseEntity<User> deleteUser(@PathVariable("user_id") Long user_id){
         userService.deleteUser(user_id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,4 +21,8 @@ public class Cart {
     private Long cart_id;
     private Long total_price;
     private Long quantity;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id", nullable =  false)
+    private Product product;
 }

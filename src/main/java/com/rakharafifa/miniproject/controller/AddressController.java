@@ -45,13 +45,13 @@ public class AddressController {
     }
 
     @PutMapping("/{address_id}")
-    public ResponseEntity<Address> updateAddress(@PathVariable("/address_id") Long address_id, @RequestBody Address address){
+    public ResponseEntity<Address> updateAddress(@PathVariable("address_id") Long address_id, @RequestBody Address address){
         addressService.updateAddress(address_id, address);
         return new ResponseEntity<>(addressService.getAddressById(address_id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{address_id}")
-    public ResponseEntity<Address> deleteAddress(@PathVariable("/address_id") Long address_id){
+    public ResponseEntity<Address> deleteAddress(@PathVariable("address_id") Long address_id){
         addressService.deleteAddress(address_id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

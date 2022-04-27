@@ -45,13 +45,13 @@ public class CartController {
     }
 
     @PutMapping("/{cart_id}")
-    public ResponseEntity<Cart> updateCart(@PathVariable("/cart_id") Long cart_id, @RequestBody Cart cart){
+    public ResponseEntity<Cart> updateCart(@PathVariable("cart_id") Long cart_id, @RequestBody Cart cart){
         cartService.updateCart(cart_id, cart);
         return new ResponseEntity<>(cartService.getCartById(cart_id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{cart_id}")
-    public ResponseEntity<Cart> deleteCart(@PathVariable("/cart_id") Long cart_id){
+    public ResponseEntity<Cart> deleteCart(@PathVariable("cart_id") Long cart_id){
         cartService.deleteCart(cart_id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

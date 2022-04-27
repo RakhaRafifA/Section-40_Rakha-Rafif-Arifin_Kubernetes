@@ -45,13 +45,13 @@ public class TransactionController {
     }
 
     @PutMapping("/{transaction_id}")
-    public ResponseEntity<Transaction> updateTransaction(@PathVariable("/transaction_id") Long transaction_id, @RequestBody Transaction transaction){
+    public ResponseEntity<Transaction> updateTransaction(@PathVariable("transaction_id") Long transaction_id, @RequestBody Transaction transaction){
         transactionService.updateTransaction(transaction_id, transaction);
         return new ResponseEntity<>(transactionService.getTransactionById(transaction_id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{transaction_id}")
-    public ResponseEntity<Transaction> deleteTransaction(@PathVariable("/transaction_id") Long transaction_id){
+    public ResponseEntity<Transaction> deleteTransaction(@PathVariable("transaction_id") Long transaction_id){
         transactionService.deleteTransaction(transaction_id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

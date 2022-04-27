@@ -45,13 +45,13 @@ public class WalletController {
     }
 
     @PutMapping("/{wallet_id}")
-    public ResponseEntity<Wallet> updateWallet(@PathVariable("/Wallet_id") Long wallet_id, @RequestBody Wallet wallet){
+    public ResponseEntity<Wallet> updateWallet(@PathVariable("Wallet_id") Long wallet_id, @RequestBody Wallet wallet){
         walletService.updateWallet(wallet_id, wallet);
         return new ResponseEntity<>(walletService.getWalletById(wallet_id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{wallet_id}")
-    public ResponseEntity<Wallet> deleteWallet(@PathVariable("/wallet_id") Long wallet_id){
+    public ResponseEntity<Wallet> deleteWallet(@PathVariable("wallet_id") Long wallet_id){
         walletService.deleteWallet(wallet_id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
