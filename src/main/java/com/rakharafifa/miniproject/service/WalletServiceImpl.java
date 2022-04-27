@@ -48,6 +48,5 @@ public class WalletServiceImpl implements WalletService {
     @Override
     public void deleteWallet(Long wallet_id) {
         walletRepository.deleteById(wallet_id);
-        
     }
 }
