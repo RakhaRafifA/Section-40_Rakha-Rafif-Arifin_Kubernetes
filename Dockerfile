@@ -1,6 +1,6 @@
 FROM openjdk:18-jdk-alpine
 
-ADD target/miniproject-rakha.jar miniproject-rakha.jar
+ADD target/miniproject-rakharafifa.jar miniproject-rakharafifa.jar
 
 EXPOSE 8080
 
