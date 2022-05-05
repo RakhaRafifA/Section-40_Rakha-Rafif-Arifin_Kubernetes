@@ -4,4 +4,4 @@ ADD target/miniproject-rakharafifa.jar miniproject-rakharafifa.jar
 
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar", "/miniproject-rakha.jar"]
+ENTRYPOINT ["java", "-jar", "/miniproject-rakharafifa.jar"]
