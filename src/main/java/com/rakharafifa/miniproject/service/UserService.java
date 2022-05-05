@@ -4,7 +4,9 @@ import java.util.List;
 
 import com.rakharafifa.miniproject.model.entity.User;
 
-public interface UserService {
+import org.springframework.security.core.userdetails.UserDetailsService;
+
+public interface UserService extends UserDetailsService {
     List<User> getAllUser();
     User getUserById(Long user_id);
     User createUser(User user);

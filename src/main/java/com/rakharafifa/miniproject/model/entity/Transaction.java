@@ -26,11 +26,11 @@ public class Transaction {
     private Instant created_at;
     private Instant updated_at;
 
-    @ManyToOne
-    @JoinColumn(name = "product_id", nullable =  false)
-    private Product product;
+    // @ManyToOne
+    // @JoinColumn(name = "product_id", nullable =  false)
+    // private Product product;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable =  false)
-    private User user;
+    // @ManyToOne
+    // @JoinColumn(name = "user_id", nullable =  false)
+    // private User user;
 }

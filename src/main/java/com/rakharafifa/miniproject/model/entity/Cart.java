@@ -26,7 +26,7 @@ public class Cart {
     private Instant created_at;
     private Instant updated_at;
 
-    @ManyToOne
-    @JoinColumn(name = "product_id", nullable =  false)
-    private Product product;
+    // @ManyToOne
+    // @JoinColumn(name = "product_id", nullable =  false)
+    // private Product product;
 }

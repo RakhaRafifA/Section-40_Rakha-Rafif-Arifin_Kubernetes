@@ -7,15 +7,28 @@ import com.rakharafifa.miniproject.model.entity.User;
 import com.rakharafifa.miniproject.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
     UserRepository userRepository;
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository){
         this.userRepository = userRepository;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.getDistinctTopByUsername(username);
+        if (user == null)
+        throw new UsernameNotFoundException("Username not Found");
+        return user;
     }
 
     @Override
