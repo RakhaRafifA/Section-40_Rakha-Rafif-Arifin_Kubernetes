@@ -1,5 +1,7 @@
 package com.rakharafifa.miniproject.model.entity;
 
+import java.time.Instant;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,4 +22,6 @@ public class Product {
     private String description;
     private Long price;
     private Long quantity;
+    private Instant created_at;
+    private Instant updated_at;
 }

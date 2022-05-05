@@ -1,5 +1,7 @@
 package com.rakharafifa.miniproject.model.entity;
 
+import java.time.Instant;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,4 +23,6 @@ public class Address {
     private String province;
     private Long post;
     private String detail;
+    private Instant created_at;
+    private Instant updated_at;
 }

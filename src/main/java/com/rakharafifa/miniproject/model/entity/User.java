@@ -1,5 +1,7 @@
 package com.rakharafifa.miniproject.model.entity;
 
+import java.time.Instant;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,6 +24,8 @@ public class User {
     private String name;
     private String username;
     private String password;
+    private Instant created_at;
+    private Instant updated_at;
 
     @ManyToOne
     @JoinColumn(name = "address_id", nullable =  false)

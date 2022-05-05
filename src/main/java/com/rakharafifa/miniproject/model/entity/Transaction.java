@@ -1,5 +1,7 @@
 package com.rakharafifa.miniproject.model.entity;
 
+import java.time.Instant;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,6 +23,8 @@ public class Transaction {
     private Long transaction_id;
     private Long price;
     private Long total_price;
+    private Instant created_at;
+    private Instant updated_at;
 
     @ManyToOne
     @JoinColumn(name = "product_id", nullable =  false)
