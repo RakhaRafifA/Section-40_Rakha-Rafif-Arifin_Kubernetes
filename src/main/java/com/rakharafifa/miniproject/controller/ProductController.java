@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/miniproject/Product")
+@RequestMapping("/miniproject/product")
 public class ProductController {
     ProductService productService;
 
