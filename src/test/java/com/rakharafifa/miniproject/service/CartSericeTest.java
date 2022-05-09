@@ -12,30 +12,21 @@ import com.rakharafifa.miniproject.model.entity.Cart;
 import com.rakharafifa.miniproject.repository.CartRepository;
 
 import org.jeasy.random.EasyRandom;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
 public class CartSericeTest {
     private final EasyRandom EASY_RANDOM = new EasyRandom();
-    private Long id;
 
     @InjectMocks
     private CartServiceImpl service;
 
     @Mock
     private CartRepository repository;
-
-    @BeforeEach
-    void setUp(){
-        MockitoAnnotations.initMocks(this);
-        id = EASY_RANDOM.nextObject(Long.class);
-    }
 
     @Test
     void findAllCart(){
