@@ -40,7 +40,11 @@ public class UserServiceTest {
 
     @Test
     void findUserById(){
-        User user = EASY_RANDOM.nextObject(User.class);
+        User user = new User();
+        user.setUser_id(1L);
+        user.setName("Rakha");
+        user.setUsername("rakha");
+        user.setPassword("password");
         System.out.println(user);
 
         when(repository.findById(user.getUser_id())).thenReturn(Optional.of(user));
@@ -50,7 +54,11 @@ public class UserServiceTest {
 
     @Test
     void createNewUser(){
-        User user = EASY_RANDOM.nextObject(User.class);
+        User user = new User();
+        user.setUser_id(1L);
+        user.setName("Rakha");
+        user.setUsername("rakha");
+        user.setPassword("password");
         System.out.println(user);
 
         when(repository.save(user)).thenReturn(user);
@@ -68,7 +76,12 @@ public class UserServiceTest {
 
     @Test
     public void whenGivenId_shouldUpdateUser_ifFound() {
-        User user = EASY_RANDOM.nextObject(User.class);
+        User user = new User();
+        user.setUser_id(1L);
+        user.setName("Rakha");
+        user.setUsername("rakha");
+        user.setPassword("password");
+        
         User newUser = new User();
         newUser.setName("Baru");
 

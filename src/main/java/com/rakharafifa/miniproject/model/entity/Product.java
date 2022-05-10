@@ -6,6 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,6 +26,8 @@ public class Product {
     private String description;
     private Long price;
     private Long quantity;
+    @CreationTimestamp
     private Instant created_at;
+    @UpdateTimestamp
     private Instant updated_at;
 }

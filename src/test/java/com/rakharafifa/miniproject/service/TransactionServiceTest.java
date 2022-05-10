@@ -40,17 +40,24 @@ public class TransactionServiceTest {
 
     @Test
     void findTransactionById(){
-        Transaction transaction = EASY_RANDOM.nextObject(Transaction.class);
+        Transaction transaction = new Transaction();
+        transaction.setTransaction_id(1L);
+        transaction.setPrice(20000L);
+        transaction.setTotal_price(50000L);
         System.out.println(transaction);
 
         when(repository.findById(transaction.getTransaction_id())).thenReturn(Optional.of(transaction));
         service.getTransactionById(transaction.getTransaction_id());
-        verify(repository, times(1)).findById(transaction.getTransaction_id());
+        verify(repository,times(1)).findById(transaction.getTransaction_id());
     }
 
     @Test
     void createNewTransaction(){
-        Transaction transaction = EASY_RANDOM.nextObject(Transaction.class);
+        Transaction transaction = new Transaction();
+        transaction.setTransaction_id(1L);
+        transaction.setPrice(20000L);
+        transaction.setTotal_price(50000L);
+        
         System.out.println(transaction);
 
         when(repository.save(transaction)).thenReturn(transaction);
@@ -68,7 +75,11 @@ public class TransactionServiceTest {
 
     @Test
     public void whenGivenId_shouldUpdateUser_ifFound() {
-        Transaction transaction = EASY_RANDOM.nextObject(Transaction.class);
+        Transaction transaction = new Transaction();
+        transaction.setTransaction_id(1L);
+        transaction.setPrice(20000L);
+        transaction.setTotal_price(50000L);
+        
         Transaction newTransaction = new Transaction();
         newTransaction.setPrice(50000L);
 

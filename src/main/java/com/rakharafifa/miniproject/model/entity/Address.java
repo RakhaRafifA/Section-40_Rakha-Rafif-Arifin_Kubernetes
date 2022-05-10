@@ -7,6 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,6 +26,8 @@ public class Address {
     private String province;
     private Long post;
     private String detail;
+    @CreationTimestamp
     private Instant created_at;
+    @UpdateTimestamp
     private Instant updated_at;
 }

@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.security.core.userdetails.UserDetails;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 
 import lombok.AllArgsConstructor;
@@ -31,26 +33,31 @@ public class User implements UserDetails{
     private String name;
     private String username;
     private String password;
+
+    @CreationTimestamp
     private Instant created_at;
+
+    @UpdateTimestamp
     private Instant updated_at;
+    
     @Column(columnDefinition = "boolean default true")
     private boolean active = true;
 
-    // @ManyToOne
-    // @JoinColumn(name = "address_id", nullable =  false)
-    // private Address address;
+    @ManyToOne
+    @JoinColumn(name = "address_id", nullable =  false)
+    private Address address;
 
-    // @ManyToOne
-    // @JoinColumn(name = "cart_id", nullable =  false)
-    // private Cart cart;
+    @ManyToOne
+    @JoinColumn(name = "cart_id", nullable =  false)
+    private Cart cart;
 
-    // @ManyToOne
-    // @JoinColumn(name = "transaction_id", nullable =  false)
-    // private Transaction transaction;
+    @ManyToOne
+    @JoinColumn(name = "transaction_id", nullable =  false)
+    private Transaction transaction;
 
-    // @ManyToOne
-    // @JoinColumn(name = "wallet_id", nullable =  false)
-    // private Wallet wallet;
+    @ManyToOne
+    @JoinColumn(name = "wallet_id", nullable =  false)
+    private Wallet wallet;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
