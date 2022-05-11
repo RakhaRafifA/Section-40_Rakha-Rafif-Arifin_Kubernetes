@@ -3,6 +3,7 @@ package com.rakharafifa.miniproject.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.rakharafifa.miniproject.model.dto.WalletDto;
 import com.rakharafifa.miniproject.model.entity.Wallet;
 import com.rakharafifa.miniproject.repository.WalletRepository;
 
@@ -26,13 +27,36 @@ public class WalletServiceImpl implements WalletService {
     }
 
     @Override
+    public List<WalletDto> getAllWalletDto() {
+        List<Wallet> wallets = walletRepository.findAll();
+        List<WalletDto> walletDtos = new ArrayList<>();
+        
+        wallets.forEach(isi ->{
+            WalletDto dto = new WalletDto();
+            dto.setWallet_id(isi.getWallet_id());
+            dto.setName(isi.getName());
+            dto.setAmount(isi.getAmount());
+
+            walletDtos.add(dto);
+        });
+        return walletDtos;
+    }
+
+    @Override
     public Wallet getWalletById(Long wallet_id) {
         return walletRepository.findById(wallet_id).get();
     }
 
     @Override
-    public Wallet createWallet(Wallet wallet) {
-        return walletRepository.save(wallet);
+    public void createWalletDto(WalletDto walletDtos) {
+        Wallet wallet = new Wallet();
+
+        wallet.setWallet_id(walletDtos.getWallet_id());
+        wallet.setName(walletDtos.getName());
+        wallet.setAmount(walletDtos.getAmount());
+        wallet.setTop_up(walletDtos.getTop_up());
+
+        walletRepository.save(wallet);
     }
 
     @Override

@@ -52,19 +52,19 @@ public class UserServiceTest {
         verify(repository, times(1)).findById(user.getUser_id());
     }
 
-    @Test
-    void createNewUser(){
-        User user = new User();
-        user.setUser_id(1L);
-        user.setName("Rakha");
-        user.setUsername("rakha");
-        user.setPassword("password");
-        System.out.println(user);
+    // @Test
+    // void createNewUser(){
+    //     User user = new User();
+    //     user.setUser_id(1L);
+    //     user.setName("Rakha");
+    //     user.setUsername("rakha");
+    //     user.setPassword("password");
+    //     System.out.println(user);
 
-        when(repository.save(user)).thenReturn(user);
-        service.createUser(user);
-        verify(repository, times(1)).save(user);
-    }
+    //     when(repository.save(user)).thenReturn(user);
+    //     service.createUser(user);
+    //     verify(repository, times(1)).save(user);
+    // }
 
     @Test
     public void deleteUserById(){

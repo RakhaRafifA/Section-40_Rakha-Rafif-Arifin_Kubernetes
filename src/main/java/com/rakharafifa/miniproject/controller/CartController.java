@@ -2,6 +2,7 @@ package com.rakharafifa.miniproject.controller;
 
 import java.util.List;
 
+import com.rakharafifa.miniproject.model.dto.CartDto;
 import com.rakharafifa.miniproject.model.entity.Cart;
 import com.rakharafifa.miniproject.service.CartService;
 
@@ -33,15 +34,21 @@ public class CartController {
         return new ResponseEntity<>(carts, HttpStatus.OK);
     }
 
+    @GetMapping("/dto")
+    public ResponseEntity<List<CartDto>> getAllCartDto(){
+        List<CartDto> cartDtos = cartService.getAllCartDto();
+        return new ResponseEntity<>(cartDtos, HttpStatus.OK);
+    }
+
     @GetMapping("/{cart_id}")
     public ResponseEntity<Cart> getCartById(@PathVariable("cart_id") Long cart_id){
         return new ResponseEntity<>(cartService.getCartById(cart_id), HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<Cart> createCart(@RequestBody Cart cart){
-        Cart cart2 = cartService.createCart(cart);
-        return new ResponseEntity<>(cart2, HttpStatus.OK);
+    public ResponseEntity<CartDto> createCartDto(@RequestBody CartDto cartDtos){
+        cartService.createCartDto(cartDtos);
+        return new ResponseEntity<>(cartDtos, HttpStatus.OK);
     }
 
     @PutMapping("/{cart_id}")

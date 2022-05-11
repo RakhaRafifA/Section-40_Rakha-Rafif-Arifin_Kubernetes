@@ -2,6 +2,7 @@ package com.rakharafifa.miniproject.controller;
 
 import java.util.List;
 
+import com.rakharafifa.miniproject.model.dto.TransactionDto;
 import com.rakharafifa.miniproject.model.entity.Transaction;
 import com.rakharafifa.miniproject.service.TransactionService;
 
@@ -33,15 +34,21 @@ public class TransactionController {
         return new ResponseEntity<>(transactions, HttpStatus.OK);
     }
 
+    @GetMapping("/dto")
+    public ResponseEntity<List<TransactionDto>> getAllTransactionDto(){
+        List<TransactionDto> transactionDtos = transactionService.getAllTransactionDto();
+        return new ResponseEntity<>(transactionDtos, HttpStatus.OK);
+    }
+
     @GetMapping("/{transaction_id}")
     public ResponseEntity<Transaction> getTransactionById(@PathVariable("transaction_id") Long transaction_id){
         return new ResponseEntity<>(transactionService.getTransactionById(transaction_id), HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<Transaction> createTransaction(@RequestBody Transaction transaction){
-        Transaction transaction2 = transactionService.createTransaction(transaction);
-        return new ResponseEntity<>(transaction2, HttpStatus.OK);
+    public ResponseEntity<TransactionDto> createTransactionDto(@RequestBody TransactionDto transactionDtos){
+        transactionService.createTransactionDto(transactionDtos);
+        return new ResponseEntity<>(transactionDtos, HttpStatus.OK);
     }
 
     @PutMapping("/{transaction_id}")

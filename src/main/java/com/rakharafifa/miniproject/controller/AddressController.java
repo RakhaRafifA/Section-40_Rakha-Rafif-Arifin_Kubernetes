@@ -2,6 +2,7 @@ package com.rakharafifa.miniproject.controller;
 
 import java.util.List;
 
+import com.rakharafifa.miniproject.model.dto.AddressDto;
 import com.rakharafifa.miniproject.model.entity.Address;
 import com.rakharafifa.miniproject.service.AddressService;
 
@@ -33,15 +34,21 @@ public class AddressController {
         return new ResponseEntity<>(addresss, HttpStatus.OK);
     }
 
+    @GetMapping("/dto")
+    public ResponseEntity<List<AddressDto>> getAllAddressDto(){
+        List<AddressDto> addressDtos = addressService.getAllAddressDto();
+        return new ResponseEntity<>(addressDtos, HttpStatus.OK);
+    }
+
     @GetMapping("/{address_id}")
     public ResponseEntity<Address> getAddressById(@PathVariable("address_id") Long address_id){
         return new ResponseEntity<>(addressService.getAddressById(address_id), HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<Address> createAddress(@RequestBody Address address){
-        Address address2 = addressService.createAddress(address);
-        return new ResponseEntity<>(address2, HttpStatus.OK);
+    public ResponseEntity<AddressDto> createAddress(@RequestBody AddressDto addressDtos){
+        addressService.createAddressDto(addressDtos);
+        return new ResponseEntity<>(addressDtos, HttpStatus.OK);
     }
 
     @PutMapping("/{address_id}")

@@ -51,19 +51,19 @@ public class TransactionServiceTest {
         verify(repository,times(1)).findById(transaction.getTransaction_id());
     }
 
-    @Test
-    void createNewTransaction(){
-        Transaction transaction = new Transaction();
-        transaction.setTransaction_id(1L);
-        transaction.setPrice(20000L);
-        transaction.setTotal_price(50000L);
+    // @Test
+    // void createNewTransaction(){
+    //     Transaction transaction = new Transaction();
+    //     transaction.setTransaction_id(1L);
+    //     transaction.setPrice(20000L);
+    //     transaction.setTotal_price(50000L);
         
-        System.out.println(transaction);
+    //     System.out.println(transaction);
 
-        when(repository.save(transaction)).thenReturn(transaction);
-        service.createTransaction(transaction);
-        verify(repository, times(1)).save(transaction);
-    }
+    //     when(repository.save(transaction)).thenReturn(transaction);
+    //     service.createTransaction(transaction);
+    //     verify(repository, times(1)).save(transaction);
+    // }
 
     @Test
     public void deleteTransactionById(){

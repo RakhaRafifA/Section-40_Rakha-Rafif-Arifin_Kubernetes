@@ -3,6 +3,7 @@ package com.rakharafifa.miniproject.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.rakharafifa.miniproject.model.dto.ProductDto;
 import com.rakharafifa.miniproject.model.entity.Product;
 import com.rakharafifa.miniproject.repository.ProductRepository;
 
@@ -26,13 +27,37 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public List<ProductDto> getAllProductDto() {
+        List<Product> products = productRepository.findAll();
+        List<ProductDto> productDtos = new ArrayList<>();
+        
+        products.forEach(isi ->{
+            ProductDto dto = new ProductDto();
+            dto.setProduct_id(isi.getProduct_id());
+            dto.setName(isi.getName());
+            dto.setPrice(isi.getPrice());
+
+            productDtos.add(dto);
+        });
+        return productDtos;
+    }
+
+    @Override
     public Product getProductById(Long product_id) {
         return productRepository.findById(product_id).get();
     }
 
     @Override
-    public Product createProduct(Product product) {
-        return productRepository.save(product);
+    public void createProductDto(ProductDto productDtos) {
+        Product product = new Product();
+
+        product.setProduct_id(productDtos.getProduct_id());
+        product.setName(productDtos.getName());
+        product.setPrice(productDtos.getPrice());
+        product.setQuantity(productDtos.getQuantity());
+        product.setDescription(productDtos.getDescription());
+
+        productRepository.save(product);
     }
 
     @Override

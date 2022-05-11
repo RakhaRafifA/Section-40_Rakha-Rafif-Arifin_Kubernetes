@@ -2,6 +2,7 @@ package com.rakharafifa.miniproject.controller;
 
 import java.util.List;
 
+import com.rakharafifa.miniproject.model.dto.ProductDto;
 import com.rakharafifa.miniproject.model.entity.Product;
 import com.rakharafifa.miniproject.service.ProductService;
 
@@ -33,15 +34,21 @@ public class ProductController {
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
+    @GetMapping("/dto")
+    public ResponseEntity<List<ProductDto>> getAllProductDto(){
+        List<ProductDto> productDtos = productService.getAllProductDto();
+        return new ResponseEntity<>(productDtos, HttpStatus.OK);
+    }
+
     @GetMapping("/{product_id}")
     public ResponseEntity<Product> getProductById(@PathVariable("product_id") Long product_id){
         return new ResponseEntity<>(productService.getProductById(product_id), HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<Product> createProduct(@RequestBody Product product){
-        Product product2 = productService.createProduct(product);
-        return new ResponseEntity<>(product2, HttpStatus.OK);
+    public ResponseEntity<ProductDto> createProductDto(@RequestBody ProductDto productDtos){
+        productService.createProductDto(productDtos);
+        return new ResponseEntity<>(productDtos, HttpStatus.OK);
     }
 
     @PutMapping("/{product_id}")

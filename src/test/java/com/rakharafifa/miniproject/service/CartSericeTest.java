@@ -48,15 +48,15 @@ public class CartSericeTest {
         verify(repository, times(1)).findById(cart.getCart_id());
     }
 
-    @Test
-    void createNewCart(){
-        Cart cart = EASY_RANDOM.nextObject(Cart.class);
-        System.out.println(cart);
+    // @Test
+    // void createNewCart(){
+    //     Cart cart = EASY_RANDOM.nextObject(Cart.class);
+    //     System.out.println(cart);
 
-        when(repository.save(cart)).thenReturn(cart);
-        service.createCart(cart);
-        verify(repository, times(1)).save(cart);
-    }
+    //     when(repository.save(cart)).thenReturn(cart);
+    //     service.createCart(cart);
+    //     verify(repository, times(1)).save(cart);
+    // }
 
     @Test
     public void deleteCartById(){

@@ -3,6 +3,7 @@ package com.rakharafifa.miniproject.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.rakharafifa.miniproject.model.dto.AddressDto;
 import com.rakharafifa.miniproject.model.entity.Address;
 import com.rakharafifa.miniproject.repository.AddressRepository;
 
@@ -26,13 +27,37 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
+    public List<AddressDto> getAllAddressDto() {
+        List<Address> addresss = addressRepository.findAll();
+        List<AddressDto> addressDtos = new ArrayList<>();
+        
+        addresss.forEach(isi ->{
+            AddressDto dto = new AddressDto();
+            dto.setAddress_id(isi.getAddress_id());
+            dto.setProvince(isi.getProvince());
+            dto.setCity(isi.getCity());
+
+            addressDtos.add(dto);
+        });
+        return addressDtos;
+    }
+
+    @Override
     public Address getAddressById(Long address_id) {
         return addressRepository.findById(address_id).get();
     }
 
     @Override
-    public Address createAddress(Address address) {
-        return addressRepository.save(address);
+    public void createAddressDto(AddressDto addressDtos) {
+        Address address = new Address();
+
+        address.setAddress_id(addressDtos.getAddress_id());
+        address.setProvince(addressDtos.getProvince());
+        address.setCity(addressDtos.getProvince());
+        address.setPost(addressDtos.getPost());
+        address.setDetail(addressDtos.getDetail());
+
+        addressRepository.save(address);
     }
 
     @Override

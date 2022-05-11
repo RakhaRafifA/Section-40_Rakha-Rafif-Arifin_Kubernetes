@@ -3,7 +3,9 @@ package com.rakharafifa.miniproject.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.rakharafifa.miniproject.model.dto.CartDto;
 import com.rakharafifa.miniproject.model.entity.Cart;
+import com.rakharafifa.miniproject.model.entity.Product;
 import com.rakharafifa.miniproject.repository.CartRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,13 +28,37 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
+    public List<CartDto> getAllCartDto() {
+        List<Cart> carts = cartRepository.findAll();
+        List<CartDto> cartDtos = new ArrayList<>();
+        
+        carts.forEach(isi ->{
+            CartDto dto = new CartDto();
+            dto.setCart_id(isi.getCart_id());
+            dto.setQuantity(isi.getQuantity());
+            dto.setTotal_price(isi.getTotal_price());
+
+            cartDtos.add(dto);
+        });
+        return cartDtos;
+    }
+
+    @Override
     public Cart getCartById(Long cart_id) {
         return cartRepository.findById(cart_id).get();
     }
 
     @Override
-    public Cart createCart(Cart cart) {
-        return cartRepository.save(cart);
+    public void createCartDto(CartDto cartDtos) {
+        Cart cart = new Cart();
+        Product product = new Product();
+
+        product.setProduct_id(cartDtos.getProduct_id());
+        cart.setCart_id(cartDtos.getCart_id());
+        cart.setQuantity(cartDtos.getQuantity());
+        cart.setTotal_price(cartDtos.getTotal_price());
+
+        cartRepository.save(cart);
     }
 
     @Override

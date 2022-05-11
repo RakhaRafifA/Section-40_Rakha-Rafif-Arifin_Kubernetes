@@ -48,15 +48,15 @@ public class WalletServiceTest {
         verify(repository, times(1)).findById(wallet.getWallet_id());
     }
 
-    @Test
-    void createNewWallet(){
-        Wallet wallet = EASY_RANDOM.nextObject(Wallet.class);
-        System.out.println(wallet);
+    // @Test
+    // void createNewWallet(){
+    //     Wallet wallet = EASY_RANDOM.nextObject(Wallet.class);
+    //     System.out.println(wallet);
 
-        when(repository.save(wallet)).thenReturn(wallet);
-        service.createWallet(wallet);
-        verify(repository, times(1)).save(wallet);
-    }
+    //     when(repository.save(wallet)).thenReturn(wallet);
+    //     service.createWallet(wallet);
+    //     verify(repository, times(1)).save(wallet);
+    // }
 
     @Test
     public void deleteWalletById(){

@@ -48,15 +48,15 @@ public class ProductServiceTest {
         verify(repository, times(1)).findById(product.getProduct_id());
     }
 
-    @Test
-    void createNewProduct(){
-        Product product = EASY_RANDOM.nextObject(Product.class);
-        System.out.println(product);
+    // @Test
+    // void createNewProduct(){
+    //     Product product = EASY_RANDOM.nextObject(Product.class);
+    //     System.out.println(product);
 
-        when(repository.save(product)).thenReturn(product);
-        service.createProduct(product);
-        verify(repository, times(1)).save(product);
-    }
+    //     when(repository.save(product)).thenReturn(product);
+    //     service.createProduct(product);
+    //     verify(repository, times(1)).save(product);
+    // }
 
     @Test
     public void deleteProductById(){

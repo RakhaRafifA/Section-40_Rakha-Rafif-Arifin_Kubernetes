@@ -3,7 +3,12 @@ package com.rakharafifa.miniproject.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.rakharafifa.miniproject.model.dto.UserDto;
+import com.rakharafifa.miniproject.model.entity.Address;
+import com.rakharafifa.miniproject.model.entity.Cart;
+import com.rakharafifa.miniproject.model.entity.Transaction;
 import com.rakharafifa.miniproject.model.entity.User;
+import com.rakharafifa.miniproject.model.entity.Wallet;
 import com.rakharafifa.miniproject.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,13 +44,43 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<UserDto> getAllUserDto() {
+        List<User> users = userRepository.findAll();
+        List<UserDto> userDtos = new ArrayList<>();
+        
+        users.forEach(isi ->{
+            UserDto dto = new UserDto();
+            dto.setUser_id(isi.getUser_id());
+            dto.setName(isi.getName());
+
+            userDtos.add(dto);
+        });
+        return userDtos;
+    }
+
+    @Override
     public User getUserById(Long user_id) {
         return userRepository.findById(user_id).get();
     }
 
     @Override
-    public User createUser(User User) {
-        return userRepository.save(User);
+    public void createUserDto(UserDto UserDtos) {
+        User user = new User();
+        Address address = new Address();
+        Cart cart = new Cart();
+        Transaction transaction = new Transaction();
+        Wallet wallet = new Wallet();
+
+        address.setAddress_id(UserDtos.getAddress_id());
+        cart.setCart_id(UserDtos.getCart_id());
+        transaction.setTransaction_id(UserDtos.getTransaction_id());
+        wallet.setWallet_id(UserDtos.getWallet_id());
+        user.setUser_id(UserDtos.getUser_id());
+        user.setName(UserDtos.getName());
+        user.setUsername(UserDtos.getUsername());
+        user.setPassword(UserDtos.getPassword());
+
+        userRepository.save(user);
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.rakharafifa.miniproject.controller;
 
 import java.util.List;
 
+import com.rakharafifa.miniproject.model.dto.UserDto;
 import com.rakharafifa.miniproject.model.entity.User;
 import com.rakharafifa.miniproject.service.UserService;
 
@@ -33,15 +34,21 @@ public class UserController {
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
+    @GetMapping("/dto")
+    public ResponseEntity<List<UserDto>> getAllUserDto(){
+        List<UserDto> userDtos = userService.getAllUserDto();
+        return new ResponseEntity<>(userDtos, HttpStatus.OK);
+    }
+
     @GetMapping("/{user_id}")
     public ResponseEntity<User> getUserById(@PathVariable("user_id") Long user_id){
         return new ResponseEntity<>(userService.getUserById(user_id), HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user){
-        User user2 = userService.createUser(user);
-        return new ResponseEntity<>(user2, HttpStatus.OK);
+    public ResponseEntity<UserDto> createUserDto(@RequestBody UserDto userDtos){
+        userService.createUserDto(userDtos);
+        return new ResponseEntity<>(userDtos, HttpStatus.OK);
     }
 
     @PutMapping("/{user_id}")

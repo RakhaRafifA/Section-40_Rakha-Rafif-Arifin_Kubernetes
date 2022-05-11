@@ -3,7 +3,10 @@ package com.rakharafifa.miniproject.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.rakharafifa.miniproject.model.dto.TransactionDto;
+import com.rakharafifa.miniproject.model.entity.Product;
 import com.rakharafifa.miniproject.model.entity.Transaction;
+import com.rakharafifa.miniproject.model.entity.User;
 import com.rakharafifa.miniproject.repository.TransactionRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,13 +29,38 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
+    public List<TransactionDto> getAllTransactionDto() {
+        List<Transaction> transactions = transactionRepository.findAll();
+        List<TransactionDto> transactionDtos = new ArrayList<>();
+        
+        transactions.forEach(isi ->{
+            TransactionDto dto = new TransactionDto();
+            dto.setTransaction_id(isi.getTransaction_id());
+            dto.setTotal_price(isi.getTotal_price());
+
+            transactionDtos.add(dto);
+        });
+        return transactionDtos;
+    }
+
+    @Override
     public Transaction getTransactionById(Long transaction_id) {
         return transactionRepository.findById(transaction_id).get();
     }
 
     @Override
-    public Transaction createTransaction(Transaction transaction) {
-        return transactionRepository.save(transaction);
+    public void createTransactionDto(TransactionDto transactionDtos) {
+        Transaction transaction = new Transaction();
+        Product product = new Product();
+        User user = new User();
+        
+        product.setProduct_id(transactionDtos.getProduct_id());
+        user.setUser_id(transactionDtos.getUser_id());
+        transaction.setTransaction_id(transactionDtos.getTransaction_id());
+        transaction.setPrice(transactionDtos.getPrice());
+        transaction.setTotal_price(transaction.getTotal_price());
+
+        transactionRepository.save(transaction);
     }
 
     @Override
