@@ -62,4 +62,3 @@ jobs:
         username: ${{ secrets.USERNAME.AWS.EC2 }}
         key: ${{ secrets.PRIVATE.KEY.AWS.EC2 }}
         port: 22
-        # script
