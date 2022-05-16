@@ -65,11 +65,11 @@ jobs:
         script: |
           echo "========= stop container ========";
           docker stop ${{ secrets.CONTAINER_NAME }}
-          echo "========= remove container ========";
-          docker rm ${{ secrets.CONTAINER_NAME }}
-          echo "========= hapus image ========";
-          docker rmi -f ${{ secrets.REPOSITORY_DOCKER_HUB }}:latest
-          echo "========= pull image ========";
-          docker pull ${{ secrets.REPOSITORY_DOCKER_HUB }}:latest
-          echo "========= run image ========";
-          docker run -p 80:8080 --name ${{ secrets.CONTAINER_NAME }} ${{ secrets.REPOSITORY_DOCKER_HUB }}:latest
+          # echo "========= remove container ========";
+          # docker rm ${{ secrets.CONTAINER_NAME }}
+          # echo "========= hapus image ========";
+          # docker rmi -f ${{ secrets.REPOSITORY_DOCKER_HUB }}:latest
+          # echo "========= pull image ========";
+          # docker pull ${{ secrets.REPOSITORY_DOCKER_HUB }}:latest
+          # echo "========= run image ========";
+          # docker run -p 80:8080 --name ${{ secrets.CONTAINER_NAME }} ${{ secrets.REPOSITORY_DOCKER_HUB }}
