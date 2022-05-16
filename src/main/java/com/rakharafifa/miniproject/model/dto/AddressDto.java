@@ -9,4 +9,5 @@ public class AddressDto {
     private String province;
     private Long post;
     private String detail;
+    private Long user_id;
 }

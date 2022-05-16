@@ -8,4 +8,5 @@ public class CartDto {
     private Long product_id;
     private Long total_price;
     private Long quantity;
+    private Long user_id;
 }

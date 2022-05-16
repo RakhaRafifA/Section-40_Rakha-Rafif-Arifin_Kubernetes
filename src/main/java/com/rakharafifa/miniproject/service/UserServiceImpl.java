@@ -4,11 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.rakharafifa.miniproject.model.dto.UserDto;
-import com.rakharafifa.miniproject.model.entity.Address;
-import com.rakharafifa.miniproject.model.entity.Cart;
-import com.rakharafifa.miniproject.model.entity.Transaction;
 import com.rakharafifa.miniproject.model.entity.User;
-import com.rakharafifa.miniproject.model.entity.Wallet;
 import com.rakharafifa.miniproject.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,15 +62,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void createUserDto(UserDto UserDtos) {
         User user = new User();
-        Address address = new Address();
-        Cart cart = new Cart();
-        Transaction transaction = new Transaction();
-        Wallet wallet = new Wallet();
 
-        address.setAddress_id(UserDtos.getAddress_id());
-        cart.setCart_id(UserDtos.getCart_id());
-        transaction.setTransaction_id(UserDtos.getTransaction_id());
-        wallet.setWallet_id(UserDtos.getWallet_id());
         user.setUser_id(UserDtos.getUser_id());
         user.setName(UserDtos.getName());
         user.setUsername(UserDtos.getUsername());

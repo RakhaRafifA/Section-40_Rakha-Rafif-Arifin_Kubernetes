@@ -8,8 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.security.core.userdetails.UserDetails;
@@ -42,22 +40,6 @@ public class User implements UserDetails{
     
     @Column(columnDefinition = "boolean default true")
     private boolean active = true;
-
-    @ManyToOne
-    @JoinColumn(name = "address_id", nullable =  false)
-    private Address address;
-
-    @ManyToOne
-    @JoinColumn(name = "cart_id", nullable =  false)
-    private Cart cart;
-
-    @ManyToOne
-    @JoinColumn(name = "transaction_id", nullable =  false)
-    private Transaction transaction;
-
-    @ManyToOne
-    @JoinColumn(name = "wallet_id", nullable =  false)
-    private Wallet wallet;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

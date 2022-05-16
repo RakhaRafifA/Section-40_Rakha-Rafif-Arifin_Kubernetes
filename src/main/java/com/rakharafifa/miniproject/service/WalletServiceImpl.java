@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.rakharafifa.miniproject.model.dto.WalletDto;
+import com.rakharafifa.miniproject.model.entity.User;
 import com.rakharafifa.miniproject.model.entity.Wallet;
 import com.rakharafifa.miniproject.repository.WalletRepository;
 
@@ -50,7 +51,9 @@ public class WalletServiceImpl implements WalletService {
     @Override
     public void createWalletDto(WalletDto walletDtos) {
         Wallet wallet = new Wallet();
+        User user = new User();
 
+        user.setUser_id(walletDtos.getUser_id());
         wallet.setWallet_id(walletDtos.getWallet_id());
         wallet.setName(walletDtos.getName());
         wallet.setAmount(walletDtos.getAmount());
@@ -63,6 +66,7 @@ public class WalletServiceImpl implements WalletService {
     public void updateWallet(Long wallet_id, Wallet wallet) {
         Wallet wallet2 = walletRepository.findById(wallet_id).get();
         System.out.println(wallet2.toString());
+
         wallet2.setName(wallet.getName());
         wallet2.setAmount(wallet.getAmount());
         wallet2.setTop_up(wallet.getTop_up());

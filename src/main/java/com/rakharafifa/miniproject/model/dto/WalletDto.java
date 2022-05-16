@@ -8,4 +8,5 @@ public class WalletDto {
     private String name;
     private Long amount;
     private Long top_up;
+    private Long user_id;
 }

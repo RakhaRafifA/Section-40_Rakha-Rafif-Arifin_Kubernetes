@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.rakharafifa.miniproject.model.dto.AddressDto;
 import com.rakharafifa.miniproject.model.entity.Address;
+import com.rakharafifa.miniproject.model.entity.User;
 import com.rakharafifa.miniproject.repository.AddressRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +51,9 @@ public class AddressServiceImpl implements AddressService {
     @Override
     public void createAddressDto(AddressDto addressDtos) {
         Address address = new Address();
+        User user = new User();
 
+        user.setUser_id(addressDtos.getUser_id());
         address.setAddress_id(addressDtos.getAddress_id());
         address.setProvince(addressDtos.getProvince());
         address.setCity(addressDtos.getProvince());

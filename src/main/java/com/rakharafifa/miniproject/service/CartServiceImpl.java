@@ -6,6 +6,7 @@ import java.util.List;
 import com.rakharafifa.miniproject.model.dto.CartDto;
 import com.rakharafifa.miniproject.model.entity.Cart;
 import com.rakharafifa.miniproject.model.entity.Product;
+import com.rakharafifa.miniproject.model.entity.User;
 import com.rakharafifa.miniproject.repository.CartRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +53,9 @@ public class CartServiceImpl implements CartService {
     public void createCartDto(CartDto cartDtos) {
         Cart cart = new Cart();
         Product product = new Product();
+        User user = new User();
 
+        user.setUser_id(cartDtos.getUser_id());
         product.setProduct_id(cartDtos.getProduct_id());
         cart.setCart_id(cartDtos.getCart_id());
         cart.setQuantity(cartDtos.getQuantity());
