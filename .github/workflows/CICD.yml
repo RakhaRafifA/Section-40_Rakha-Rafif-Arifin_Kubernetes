@@ -72,4 +72,4 @@ jobs:
           echo "========= pull image ========";
           docker pull ${{ secrets.REPOSITORY_DOCKER_HUB }}:latest
           echo "========= run image ========";
-          docker run -p 80:8080 --name ${{ secrets.CONTAINER_NAME }} ${{ secrets.REPOSITORY_DOCKER_HUB }}
+          docker run -d -p 80:8080 --name ${{ secrets.CONTAINER_NAME }} ${{ secrets.REPOSITORY_DOCKER_HUB }}
