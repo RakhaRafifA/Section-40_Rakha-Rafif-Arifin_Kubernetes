@@ -60,5 +60,7 @@ jobs:
       with:
         host: ${{ secrets.HOST_AWS_EC2 }}
         username: ${{ secrets.USERNAME_AWS_EC2 }}
-        key: ${{ secrets.PRIVATE_KEY_AWS_EC2 }}
+        key: ${{ secrets.PRIVATE_KEY }}
         port: 22
+        script: |
+          echo "========= stop container ========";
