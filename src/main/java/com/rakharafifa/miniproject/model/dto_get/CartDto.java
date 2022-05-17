@@ -1,4 +1,4 @@
-package com.rakharafifa.miniproject.model.dto;
+package com.rakharafifa.miniproject.model.dto_get;
 
 import lombok.Data;
 
@@ -8,5 +8,6 @@ public class CartDto {
     private Long product_id;
     private Long total_price;
     private Long quantity;
+    private UserDto userDto;
     private Long user_id;
 }

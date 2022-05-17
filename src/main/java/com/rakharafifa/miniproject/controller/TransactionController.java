@@ -2,7 +2,8 @@ package com.rakharafifa.miniproject.controller;
 
 import java.util.List;
 
-import com.rakharafifa.miniproject.model.dto.TransactionDto;
+import com.rakharafifa.miniproject.model.dto_create.CreateTransactionDTO;
+import com.rakharafifa.miniproject.model.dto_get.TransactionDto;
 import com.rakharafifa.miniproject.model.entity.Transaction;
 import com.rakharafifa.miniproject.service.TransactionService;
 
@@ -46,9 +47,9 @@ public class TransactionController {
     }
 
     @PostMapping
-    public ResponseEntity<TransactionDto> createTransactionDto(@RequestBody TransactionDto transactionDtos){
-        transactionService.createTransactionDto(transactionDtos);
-        return new ResponseEntity<>(transactionDtos, HttpStatus.OK);
+    public ResponseEntity<CreateTransactionDTO> createTransactionDto(@RequestBody CreateTransactionDTO createTransactionDTO){
+        transactionService.createTransactionDto(createTransactionDTO);
+        return new ResponseEntity<>(createTransactionDTO, HttpStatus.OK);
     }
 
     @PutMapping("/{transaction_id}")

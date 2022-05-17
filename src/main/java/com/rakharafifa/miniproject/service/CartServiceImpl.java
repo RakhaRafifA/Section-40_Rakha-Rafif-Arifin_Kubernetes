@@ -3,7 +3,8 @@ package com.rakharafifa.miniproject.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.rakharafifa.miniproject.model.dto.CartDto;
+import com.rakharafifa.miniproject.model.dto_create.CreateCartDTO;
+import com.rakharafifa.miniproject.model.dto_get.CartDto;
 import com.rakharafifa.miniproject.model.entity.Cart;
 import com.rakharafifa.miniproject.model.entity.Product;
 import com.rakharafifa.miniproject.model.entity.User;
@@ -50,7 +51,7 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public void createCartDto(CartDto cartDtos) {
+    public void createCartDto(CreateCartDTO cartDtos) {
         Cart cart = new Cart();
         Product product = new Product();
         User user = new User();

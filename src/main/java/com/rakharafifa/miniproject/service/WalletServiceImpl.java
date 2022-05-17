@@ -3,7 +3,9 @@ package com.rakharafifa.miniproject.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.rakharafifa.miniproject.model.dto.WalletDto;
+import com.rakharafifa.miniproject.model.dto_create.CreateWalletDTO;
+import com.rakharafifa.miniproject.model.dto_get.UserDto;
+import com.rakharafifa.miniproject.model.dto_get.WalletDto;
 import com.rakharafifa.miniproject.model.entity.User;
 import com.rakharafifa.miniproject.model.entity.Wallet;
 import com.rakharafifa.miniproject.repository.WalletRepository;
@@ -31,15 +33,19 @@ public class WalletServiceImpl implements WalletService {
     public List<WalletDto> getAllWalletDto() {
         List<Wallet> wallets = walletRepository.findAll();
         List<WalletDto> walletDtos = new ArrayList<>();
-        
-        wallets.forEach(isi ->{
-            WalletDto dto = new WalletDto();
-            dto.setWallet_id(isi.getWallet_id());
-            dto.setName(isi.getName());
-            dto.setAmount(isi.getAmount());
+        for(Wallet wallet : wallets){
+            WalletDto walletDto = new WalletDto();
+            UserDto userDto = new UserDto();
 
-            walletDtos.add(dto);
-        });
+            walletDto.setWallet_id(wallet.getWallet_id());
+            walletDto.setName(wallet.getName());
+            walletDto.setAmount(wallet.getAmount());
+            walletDto.setUser_id(wallet.getUser().getUser_id());
+
+            userDto.setUser_id(wallet.getUser().getUser_id());
+            userDto.setName(wallet.getUser().getName());
+            userDto.setUsername(wallet.getUser().getUsername());
+        }
         return walletDtos;
     }
 
@@ -49,15 +55,14 @@ public class WalletServiceImpl implements WalletService {
     }
 
     @Override
-    public void createWalletDto(WalletDto walletDtos) {
+    public void createWalletDto(CreateWalletDTO createWalletDTO) {
         Wallet wallet = new Wallet();
         User user = new User();
 
-        user.setUser_id(walletDtos.getUser_id());
-        wallet.setWallet_id(walletDtos.getWallet_id());
-        wallet.setName(walletDtos.getName());
-        wallet.setAmount(walletDtos.getAmount());
-        wallet.setTop_up(walletDtos.getTop_up());
+        user.setUser_id(createWalletDTO.getUser_id());
+        wallet.setWallet_id(createWalletDTO.getWallet_id());
+        wallet.setName(createWalletDTO.getName());
+        wallet.setAmount(createWalletDTO.getAmount());
 
         walletRepository.save(wallet);
     }
@@ -69,7 +74,6 @@ public class WalletServiceImpl implements WalletService {
 
         wallet2.setName(wallet.getName());
         wallet2.setAmount(wallet.getAmount());
-        wallet2.setTop_up(wallet.getTop_up());
         walletRepository.save(wallet2);
     }
 

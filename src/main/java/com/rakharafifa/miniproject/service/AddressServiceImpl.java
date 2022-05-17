@@ -3,7 +3,8 @@ package com.rakharafifa.miniproject.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.rakharafifa.miniproject.model.dto.AddressDto;
+import com.rakharafifa.miniproject.model.dto_create.CreateAddressDTO;
+import com.rakharafifa.miniproject.model.dto_get.AddressDto;
 import com.rakharafifa.miniproject.model.entity.Address;
 import com.rakharafifa.miniproject.model.entity.User;
 import com.rakharafifa.miniproject.repository.AddressRepository;
@@ -49,16 +50,16 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public void createAddressDto(AddressDto addressDtos) {
+    public void createAddressDto(CreateAddressDTO createAddressDTO) {
         Address address = new Address();
         User user = new User();
 
-        user.setUser_id(addressDtos.getUser_id());
-        address.setAddress_id(addressDtos.getAddress_id());
-        address.setProvince(addressDtos.getProvince());
-        address.setCity(addressDtos.getProvince());
-        address.setPost(addressDtos.getPost());
-        address.setDetail(addressDtos.getDetail());
+        user.setUser_id(createAddressDTO.getUser_id());
+        address.setAddress_id(createAddressDTO.getAddress_id());
+        address.setProvince(createAddressDTO.getProvince());
+        address.setCity(createAddressDTO.getProvince());
+        address.setPost(createAddressDTO.getPost());
+        address.setDetail(createAddressDTO.getDetail());
 
         addressRepository.save(address);
     }

@@ -1,9 +1,9 @@
-package com.rakharafifa.miniproject.model.dto;
+package com.rakharafifa.miniproject.model.dto_create;
 
 import lombok.Data;
 
 @Data
-public class AddressDto {
+public class CreateAddressDTO {
     private Long address_id;
     private String city;
     private String province;

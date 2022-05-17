@@ -1,12 +1,11 @@
-package com.rakharafifa.miniproject.model.dto;
+package com.rakharafifa.miniproject.model.dto_create;
 
 import lombok.Data;
 
 @Data
-public class WalletDto {
+public class CreateWalletDTO {
     private Long wallet_id;
     private String name;
     private Long amount;
-    private Long top_up;
     private Long user_id;
 }

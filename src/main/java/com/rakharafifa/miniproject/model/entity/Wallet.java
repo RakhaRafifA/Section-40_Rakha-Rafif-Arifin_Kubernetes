@@ -26,7 +26,6 @@ public class Wallet {
     private Long wallet_id;
     private String name;
     private Long amount;
-    private Long top_up;
     @CreationTimestamp
     private Instant created_at;
     @UpdateTimestamp

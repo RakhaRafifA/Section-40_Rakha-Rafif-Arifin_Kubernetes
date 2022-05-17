@@ -1,9 +1,9 @@
-package com.rakharafifa.miniproject.model.dto;
+package com.rakharafifa.miniproject.model.dto_create;
 
 import lombok.Data;
 
 @Data
-public class ProductDto {
+public class CreateProductDTO {
     private Long product_id;
     private String name;
     private String description;

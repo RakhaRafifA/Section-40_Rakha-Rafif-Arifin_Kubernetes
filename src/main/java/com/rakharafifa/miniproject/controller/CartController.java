@@ -2,7 +2,8 @@ package com.rakharafifa.miniproject.controller;
 
 import java.util.List;
 
-import com.rakharafifa.miniproject.model.dto.CartDto;
+import com.rakharafifa.miniproject.model.dto_create.CreateCartDTO;
+import com.rakharafifa.miniproject.model.dto_get.CartDto;
 import com.rakharafifa.miniproject.model.entity.Cart;
 import com.rakharafifa.miniproject.service.CartService;
 
@@ -46,9 +47,9 @@ public class CartController {
     }
 
     @PostMapping
-    public ResponseEntity<CartDto> createCartDto(@RequestBody CartDto cartDtos){
-        cartService.createCartDto(cartDtos);
-        return new ResponseEntity<>(cartDtos, HttpStatus.OK);
+    public ResponseEntity<CreateCartDTO> createCartDto(@RequestBody CreateCartDTO createCartDTO){
+        cartService.createCartDto(createCartDTO);
+        return new ResponseEntity<>(createCartDTO, HttpStatus.OK);
     }
 
     @PutMapping("/{cart_id}")

@@ -1,4 +1,4 @@
-package com.rakharafifa.miniproject.model.dto;
+package com.rakharafifa.miniproject.model.dto_get;
 
 import lombok.Data;
 
@@ -7,5 +7,4 @@ public class UserDto {
     private Long user_id;
     private String name;
     private String username;
-    private String password;
 }
