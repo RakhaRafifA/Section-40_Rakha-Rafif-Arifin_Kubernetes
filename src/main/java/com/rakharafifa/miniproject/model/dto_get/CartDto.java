@@ -10,4 +10,5 @@ public class CartDto {
     private Long quantity;
     private UserDto userDto;
     private Long user_id;
+    private ProductDto productDto;
 }

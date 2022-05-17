@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.rakharafifa.miniproject.model.dto_create.CreateTransactionDTO;
+import com.rakharafifa.miniproject.model.dto_get.ProductDto;
 import com.rakharafifa.miniproject.model.dto_get.TransactionDto;
+import com.rakharafifa.miniproject.model.dto_get.UserDto;
 import com.rakharafifa.miniproject.model.entity.Product;
 import com.rakharafifa.miniproject.model.entity.Transaction;
 import com.rakharafifa.miniproject.model.entity.User;
@@ -33,14 +35,27 @@ public class TransactionServiceImpl implements TransactionService {
     public List<TransactionDto> getAllTransactionDto() {
         List<Transaction> transactions = transactionRepository.findAll();
         List<TransactionDto> transactionDtos = new ArrayList<>();
-        
-        transactions.forEach(isi ->{
-            TransactionDto dto = new TransactionDto();
-            dto.setTransaction_id(isi.getTransaction_id());
-            dto.setTotal_price(isi.getTotal_price());
+        for(Transaction transaction : transactions){
+            TransactionDto transactionDto = new TransactionDto();
+            UserDto userDto = new UserDto();
+            ProductDto productDto = new ProductDto();
 
-            transactionDtos.add(dto);
-        });
+            transactionDto.setTransaction_id(transaction.getTransaction_id());
+            transactionDto.setPrice(transaction.getPrice());
+            transactionDto.setTotal_price(transaction.getTotal_price());
+            transactionDto.setProduct_id(transaction.getProduct().getProduct_id());
+            transactionDto.setUser_id(transaction.getUser().getUser_id());
+
+            userDto.setUser_id(transaction.getUser().getUser_id());
+            userDto.setName(transaction.getUser().getName());
+            userDto.setUsername(transaction.getUser().getUsername());
+
+            productDto.setProduct_id(transaction.getProduct().getProduct_id());
+            productDto.setName(transaction.getProduct().getName());
+            productDto.setPrice(transaction.getPrice());
+            
+            transactionDtos.add(transactionDto);
+        }
         return transactionDtos;
     }
 

@@ -5,6 +5,8 @@ import java.util.List;
 
 import com.rakharafifa.miniproject.model.dto_create.CreateCartDTO;
 import com.rakharafifa.miniproject.model.dto_get.CartDto;
+import com.rakharafifa.miniproject.model.dto_get.ProductDto;
+import com.rakharafifa.miniproject.model.dto_get.UserDto;
 import com.rakharafifa.miniproject.model.entity.Cart;
 import com.rakharafifa.miniproject.model.entity.Product;
 import com.rakharafifa.miniproject.model.entity.User;
@@ -33,15 +35,27 @@ public class CartServiceImpl implements CartService {
     public List<CartDto> getAllCartDto() {
         List<Cart> carts = cartRepository.findAll();
         List<CartDto> cartDtos = new ArrayList<>();
-        
-        carts.forEach(isi ->{
-            CartDto dto = new CartDto();
-            dto.setCart_id(isi.getCart_id());
-            dto.setQuantity(isi.getQuantity());
-            dto.setTotal_price(isi.getTotal_price());
+        for(Cart cart : carts){
+            CartDto cartDto = new CartDto();
+            UserDto userDto = new UserDto();
+            ProductDto productDto = new ProductDto();
 
-            cartDtos.add(dto);
-        });
+            cartDto.setCart_id(cart.getCart_id());
+            cartDto.setQuantity(cart.getQuantity());
+            cartDto.setTotal_price(cart.getTotal_price());
+            cartDto.setProduct_id(cart.getProduct().getProduct_id());
+            cartDto.setUser_id(cart.getUser().getUser_id());
+
+            userDto.setUser_id(cart.getUser().getUser_id());
+            userDto.setName(cart.getUser().getName());
+            userDto.setUsername(cart.getUser().getUsername());
+
+            productDto.setProduct_id(cart.getProduct().getProduct_id());
+            productDto.setName(cart.getProduct().getName());
+            productDto.setPrice(cart.getProduct().getPrice());
+
+            cartDtos.add(cartDto);
+        }
         return cartDtos;
     }
 

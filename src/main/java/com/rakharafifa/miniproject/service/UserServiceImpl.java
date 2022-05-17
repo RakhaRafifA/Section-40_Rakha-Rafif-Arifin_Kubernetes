@@ -49,6 +49,7 @@ public class UserServiceImpl implements UserService {
             UserDto dto = new UserDto();
             dto.setUser_id(isi.getUser_id());
             dto.setName(isi.getName());
+            dto.setUsername(isi.getUsername());
 
             userDtos.add(dto);
         });

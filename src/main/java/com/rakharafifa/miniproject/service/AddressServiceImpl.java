@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.rakharafifa.miniproject.model.dto_create.CreateAddressDTO;
 import com.rakharafifa.miniproject.model.dto_get.AddressDto;
+import com.rakharafifa.miniproject.model.dto_get.UserDto;
 import com.rakharafifa.miniproject.model.entity.Address;
 import com.rakharafifa.miniproject.model.entity.User;
 import com.rakharafifa.miniproject.repository.AddressRepository;
@@ -32,15 +33,21 @@ public class AddressServiceImpl implements AddressService {
     public List<AddressDto> getAllAddressDto() {
         List<Address> addresss = addressRepository.findAll();
         List<AddressDto> addressDtos = new ArrayList<>();
-        
-        addresss.forEach(isi ->{
-            AddressDto dto = new AddressDto();
-            dto.setAddress_id(isi.getAddress_id());
-            dto.setProvince(isi.getProvince());
-            dto.setCity(isi.getCity());
+        for(Address address : addresss){
+            AddressDto addressDto = new AddressDto();
+            UserDto userDto = new UserDto();
 
-            addressDtos.add(dto);
-        });
+            addressDto.setAddress_id(address.getAddress_id());
+            addressDto.setProvince(address.getProvince());
+            addressDto.setCity(address.getCity());
+            addressDto.setUser_id(address.getUser().getUser_id());
+
+            userDto.setUser_id(address.getUser().getUser_id());
+            userDto.setName(address.getUser().getName());
+            userDto.setUsername(address.getUser().getUsername());
+
+            addressDtos.add(addressDto);
+        }
         return addressDtos;
     }
 

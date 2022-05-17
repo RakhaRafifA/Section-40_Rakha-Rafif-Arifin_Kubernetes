@@ -45,6 +45,8 @@ public class WalletServiceImpl implements WalletService {
             userDto.setUser_id(wallet.getUser().getUser_id());
             userDto.setName(wallet.getUser().getName());
             userDto.setUsername(wallet.getUser().getUsername());
+
+            walletDtos.add(walletDto);
         }
         return walletDtos;
     }
