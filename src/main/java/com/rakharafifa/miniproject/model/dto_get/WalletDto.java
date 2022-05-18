@@ -1,8 +1,10 @@
 package com.rakharafifa.miniproject.model.dto_get;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class WalletDto {
     private Long wallet_id;
     private String name;
