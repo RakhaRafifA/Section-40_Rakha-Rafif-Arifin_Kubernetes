@@ -57,7 +57,7 @@ jobs:
         --repository-name $ECR_REPOSITORY
         echo "========= delete image ECR ========";
         aws ecr batch-delete-image \
-        --repository-name $ECR_REPOSITORY
+        --repository-name $ECR_REPOSITORY \
         --image-ids imageTag=latest
         echo "========= build image ========";
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
