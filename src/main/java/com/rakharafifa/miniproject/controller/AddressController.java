@@ -46,9 +46,9 @@ public class AddressController {
     }
 
     @PostMapping
-    public ResponseEntity<AddressDto> createAddress(@RequestBody AddressDto addressDto){
-        addressService.createAddressDto(addressDto);
-        return new ResponseEntity<>(addressDto, HttpStatus.OK);
+    public ResponseEntity<Address> createAddress(@RequestBody Address address){
+        addressService.createAddress(address);
+        return new ResponseEntity<>(address, HttpStatus.OK);
     }
 
     @PutMapping("/{address_id}")

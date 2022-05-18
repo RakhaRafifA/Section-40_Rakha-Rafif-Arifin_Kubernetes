@@ -9,7 +9,7 @@ public interface WalletService {
     List<Wallet> getAllWallet();
     List<WalletDto> getAllWalletDto();
     Wallet getWalletById(Long wallet_id);
-    void createWalletDto(WalletDto walletDto);
+    void createWallet(Wallet wallet);
     void updateWallet(Long wallet_id, Wallet wallet);
     void deleteWallet(Long wallet_id);
 }

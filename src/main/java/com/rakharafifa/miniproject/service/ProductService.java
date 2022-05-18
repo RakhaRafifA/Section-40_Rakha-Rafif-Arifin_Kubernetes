@@ -9,7 +9,7 @@ public interface ProductService {
     List<Product> getAllProduct();
     List<ProductDto> getAllProductDto();
     Product getProductById(Long product_id);
-    void createProductDto(ProductDto productDto);
+    void createProduct(Product product);
     void updateProduct(Long product_id, Product product);
     void deleteProduct(Long product_id);
 }

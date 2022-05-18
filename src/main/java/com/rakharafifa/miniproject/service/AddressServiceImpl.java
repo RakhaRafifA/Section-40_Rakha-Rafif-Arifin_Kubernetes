@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.rakharafifa.miniproject.model.dto.AddressDto;
-import com.rakharafifa.miniproject.model.dto.UserDto;
 import com.rakharafifa.miniproject.model.entity.Address;
-import com.rakharafifa.miniproject.model.entity.User;
 import com.rakharafifa.miniproject.repository.AddressRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,21 +30,15 @@ public class AddressServiceImpl implements AddressService {
     public List<AddressDto> getAllAddressDto() {
         List<Address> addresss = addressRepository.findAll();
         List<AddressDto> addressDtos = new ArrayList<>();
-        for(Address address : addresss){
-            AddressDto addressDto = new AddressDto();
-            UserDto userDto = new UserDto();
 
-            addressDto.setAddress_id(address.getAddress_id());
-            addressDto.setProvince(address.getProvince());
-            addressDto.setCity(address.getCity());
-            addressDto.setUser_id(address.getUser().getUser_id());
+        addresss.forEach(isi ->{
+            AddressDto dto = new AddressDto();
+            dto.setAddress_id(isi.getAddress_id());
+            dto.setProvince(isi.getProvince());
+            dto.setCity(isi.getCity());
 
-            userDto.setUser_id(address.getUser().getUser_id());
-            userDto.setName(address.getUser().getName());
-            userDto.setUsername(address.getUser().getUsername());
-
-            addressDtos.add(addressDto);
-        }
+            addressDtos.add(dto);
+        });
         return addressDtos;
     }
 
@@ -56,17 +48,7 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public void createAddressDto(AddressDto addressDto) {
-        Address address = new Address();
-        User user = new User();
-
-        user.setUser_id(addressDto.getUser_id());
-        address.setAddress_id(addressDto.getAddress_id());
-        address.setProvince(addressDto.getProvince());
-        address.setCity(addressDto.getProvince());
-        address.setPost(addressDto.getPost());
-        address.setDetail(addressDto.getDetail());
-
+    public void createAddress(Address address) {
         addressRepository.save(address);
     }
 

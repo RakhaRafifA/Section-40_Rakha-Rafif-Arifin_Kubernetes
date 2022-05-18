@@ -11,7 +11,7 @@ public interface UserService extends UserDetailsService {
     List<User> getAllUser();
     List<UserDto> getAllUserDto();
     User getUserById(Long user_id);
-    void createUserDto(UserDto userDto);
+    void createUser(User user);
     void updateUser(Long user_id, User User);
     void deleteUser(Long user_id);
 }

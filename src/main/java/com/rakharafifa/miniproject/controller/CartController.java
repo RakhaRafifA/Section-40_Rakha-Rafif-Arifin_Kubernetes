@@ -46,9 +46,9 @@ public class CartController {
     }
 
     @PostMapping
-    public ResponseEntity<CartDto> createCartDto(@RequestBody CartDto cartDto){
-        cartService.createCartDto(cartDto);
-        return new ResponseEntity<>(cartDto, HttpStatus.OK);
+    public ResponseEntity<Cart> createCart(@RequestBody Cart cart){
+        cartService.createCart(cart);
+        return new ResponseEntity<>(cart, HttpStatus.OK);
     }
 
     @PutMapping("/{cart_id}")

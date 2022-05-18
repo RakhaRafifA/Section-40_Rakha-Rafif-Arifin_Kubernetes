@@ -48,15 +48,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void createProductDto(ProductDto productDto) {
-        Product product = new Product();
-
-        product.setProduct_id(productDto.getProduct_id());
-        product.setName(productDto.getName());
-        product.setPrice(productDto.getPrice());
-        product.setQuantity(productDto.getQuantity());
-        product.setDescription(productDto.getDescription());
-
+    public void createProduct(Product product) {
         productRepository.save(product);
     }
 

@@ -9,7 +9,7 @@ public interface CartService {
     List<Cart> getAllCart();
     List<CartDto> getAllCartDto();
     Cart getCartById(Long cart_id);
-    void createCartDto(CartDto cartDto);
+    void createCart(Cart cart);
     void updateCart(Long cart_id, Cart cart);
     void deleteCart(Long cart_id);
 }

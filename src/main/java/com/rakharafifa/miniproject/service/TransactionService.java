@@ -9,7 +9,7 @@ public interface TransactionService {
     List<Transaction> getAllTransaction();
     List<TransactionDto> getAllTransactionDto();
     Transaction getTransactionById(Long transaction_id);
-    void createTransactionDto(TransactionDto transactionDto);
+    void createTransaction(Transaction transaction);
     void updateTransaction(Long transaction_id, Transaction transaction);
     void deleteTransaction(Long transaction_id);
 }

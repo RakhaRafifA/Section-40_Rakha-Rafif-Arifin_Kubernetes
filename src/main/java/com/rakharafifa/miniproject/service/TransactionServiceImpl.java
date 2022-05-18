@@ -3,12 +3,8 @@ package com.rakharafifa.miniproject.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.rakharafifa.miniproject.model.dto.ProductDto;
 import com.rakharafifa.miniproject.model.dto.TransactionDto;
-import com.rakharafifa.miniproject.model.dto.UserDto;
-import com.rakharafifa.miniproject.model.entity.Product;
 import com.rakharafifa.miniproject.model.entity.Transaction;
-import com.rakharafifa.miniproject.model.entity.User;
 import com.rakharafifa.miniproject.repository.TransactionRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,27 +30,15 @@ public class TransactionServiceImpl implements TransactionService {
     public List<TransactionDto> getAllTransactionDto() {
         List<Transaction> transactions = transactionRepository.findAll();
         List<TransactionDto> transactionDtos = new ArrayList<>();
-        for(Transaction transaction : transactions){
-            TransactionDto transactionDto = new TransactionDto();
-            UserDto userDto = new UserDto();
-            ProductDto productDto = new ProductDto();
+        
+        transactions.forEach(isi ->{
+            TransactionDto dto = new TransactionDto();
+            dto.setTransaction_id(isi.getTransaction_id());
+            dto.setPrice(isi.getPrice());
+            dto.setTotal_price(isi.getTotal_price());
 
-            transactionDto.setTransaction_id(transaction.getTransaction_id());
-            transactionDto.setPrice(transaction.getPrice());
-            transactionDto.setTotal_price(transaction.getTotal_price());
-            transactionDto.setProduct_id(transaction.getProduct().getProduct_id());
-            transactionDto.setUser_id(transaction.getUser().getUser_id());
-
-            userDto.setUser_id(transaction.getUser().getUser_id());
-            userDto.setName(transaction.getUser().getName());
-            userDto.setUsername(transaction.getUser().getUsername());
-
-            productDto.setProduct_id(transaction.getProduct().getProduct_id());
-            productDto.setName(transaction.getProduct().getName());
-            productDto.setPrice(transaction.getPrice());
-            
-            transactionDtos.add(transactionDto);
-        }
+            transactionDtos.add(dto);
+        });
         return transactionDtos;
     }
 
@@ -64,17 +48,7 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public void createTransactionDto(TransactionDto transactionDto) {
-        Transaction transaction = new Transaction();
-        Product product = new Product();
-        User user = new User();
-        
-        product.setProduct_id(transactionDto.getProduct_id());
-        user.setUser_id(transactionDto.getUser_id());
-        transaction.setTransaction_id(transactionDto.getTransaction_id());
-        transaction.setPrice(transactionDto.getPrice());
-        transaction.setTotal_price(transactionDto.getTotal_price());
-
+    public void createTransaction(Transaction transaction) {
         transactionRepository.save(transaction);
     }
 

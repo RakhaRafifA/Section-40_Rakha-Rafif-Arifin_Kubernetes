@@ -9,6 +9,4 @@ public class WalletDto {
     private Long wallet_id;
     private String name;
     private Long amount;
-    private UserDto userDto;
-    private Long user_id;
 }
