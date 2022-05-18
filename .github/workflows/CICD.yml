@@ -55,6 +55,10 @@ jobs:
         echo "========= ecr image list ========";
         aws ecr list-images \
         --repository-name $ECR_REPOSITORY
+        echo "========= delete image ECR ========";
+        aws ecr batch-delete-image \
+        --repository-name $ECR_REPOSITORY
+        --image-ids imageTag=latest
         echo "========= build image ========";
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         echo "========= push image to ECR ========";
