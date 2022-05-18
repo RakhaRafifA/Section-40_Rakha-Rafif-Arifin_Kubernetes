@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.rakharafifa.miniproject.model.dto_create.CreateWalletDTO;
-import com.rakharafifa.miniproject.model.dto_get.UserDto;
 import com.rakharafifa.miniproject.model.dto_get.WalletDto;
 import com.rakharafifa.miniproject.model.entity.User;
 import com.rakharafifa.miniproject.model.entity.Wallet;
@@ -35,7 +34,7 @@ public class WalletServiceImpl implements WalletService {
         List<WalletDto> walletDtos = new ArrayList<>();
         for(Wallet wallet : wallets){
             WalletDto walletDto = new WalletDto();
-            UserDto userDto = new UserDto();
+            User userDto = new User();
 
             walletDto.setWallet_id(wallet.getWallet_id());
             walletDto.setName(wallet.getName());
