@@ -75,13 +75,15 @@ jobs:
         key: ${{ secrets.PRIVATE_KEY }}
         port: 22
         script: |
-          echo "========= stop container ========";
-          docker stop ${{ secrets.CONTAINER_NAME }}
-          echo "========= remove container ========";
-          docker rm ${{ secrets.CONTAINER_NAME }}
-          echo "========= hapus image ========";
-          docker rmi -f ${{ secrets.REPOSITORY_DOCKER_HUB }}:latest
-          echo "========= pull image ========";
-          docker pull ${{ secrets.REPOSITORY_DOCKER_HUB }}:latest
-          echo "========= run image ========";
-          docker run -d -p 80:8080 --name ${{ secrets.CONTAINER_NAME }} ${{ secrets.REPOSITORY_DOCKER_HUB }} 
+          docker-compose down
+          docker-compose up -d
+          # echo "========= stop container ========";
+          # docker stop ${{ secrets.CONTAINER_NAME }}
+          # echo "========= remove container ========";
+          # docker rm ${{ secrets.CONTAINER_NAME }}
+          # echo "========= hapus image ========";
+          # docker rmi -f ${{ secrets.REPOSITORY_DOCKER_HUB }}:latest
+          # echo "========= pull image ========";
+          # docker pull ${{ secrets.REPOSITORY_DOCKER_HUB }}:latest
+          # echo "========= run image ========";
+          # docker run -d -p 80:8080 --name ${{ secrets.CONTAINER_NAME }} ${{ secrets.REPOSITORY_DOCKER_HUB }} 
