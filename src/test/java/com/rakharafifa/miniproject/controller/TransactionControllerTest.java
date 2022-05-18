@@ -3,9 +3,9 @@ package com.rakharafifa.miniproject.controller;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.rakharafifa.miniproject.model.entity.Transaction;
+import com.rakharafifa.miniproject.model.entity.TransactionEntity;
 import com.rakharafifa.miniproject.repository.TransactionRepository;
-import com.rakharafifa.miniproject.service.TransactionService;
+import com.rakharafifa.miniproject.service.interfaces.TransactionService;
 
 import org.json.JSONObject;
 import org.junit.jupiter.api.DisplayName;
@@ -67,7 +67,7 @@ public class TransactionControllerTest {
     @Test
     @DisplayName("Post transaction With Correct Data")
     public void posttransactionWithData() throws Exception{
-        Transaction transaction = new Transaction();
+        TransactionEntity transaction = new TransactionEntity();
         transaction.setTransaction_id(1L);
         transaction.setPrice(20000L);
         transaction.setTotal_price(50000L);
@@ -121,7 +121,7 @@ public class TransactionControllerTest {
     @Test
     @DisplayName("Update transaction")
     public void updatetransaction() throws Exception{
-        Transaction transaction = new Transaction();
+        TransactionEntity transaction = new TransactionEntity();
         transaction.setTransaction_id(1L);
         transaction.setPrice(20000L);
         transaction.setTotal_price(50000L);

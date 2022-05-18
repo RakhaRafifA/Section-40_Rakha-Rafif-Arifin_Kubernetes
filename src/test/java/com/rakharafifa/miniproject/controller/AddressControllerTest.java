@@ -3,9 +3,9 @@ package com.rakharafifa.miniproject.controller;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.rakharafifa.miniproject.model.entity.Address;
+import com.rakharafifa.miniproject.model.entity.AddressEntity;
 import com.rakharafifa.miniproject.repository.AddressRepository;
-import com.rakharafifa.miniproject.service.AddressService;
+import com.rakharafifa.miniproject.service.interfaces.AddressService;
 
 import org.json.JSONObject;
 import org.junit.jupiter.api.DisplayName;
@@ -67,7 +67,7 @@ public class AddressControllerTest {
     @Test
     @DisplayName("Post address With Correct Data")
     public void postaddressWithData() throws Exception{
-        Address address = new Address();
+        AddressEntity address = new AddressEntity();
         address.setAddress_id(1L);
         address.setProvince("Jawa Barat");
         address.setCity("Bekasi");
@@ -126,7 +126,7 @@ public class AddressControllerTest {
     @Test
     @DisplayName("Update address")
     public void updateaddress() throws Exception{
-        Address address = new Address();
+        AddressEntity address = new AddressEntity();
         address.setProvince("Jawa Barat");
         address.setCity("Bekasi");
         address.setPost(17158L);

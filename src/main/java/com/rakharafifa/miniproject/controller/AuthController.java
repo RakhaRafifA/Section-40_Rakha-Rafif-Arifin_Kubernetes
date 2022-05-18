@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.rakharafifa.miniproject.model.payload.TokenResponse;
 import com.rakharafifa.miniproject.model.payload.UsernamePassword;
-import com.rakharafifa.miniproject.service.AuthService;
+import com.rakharafifa.miniproject.service.auth.AuthService;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

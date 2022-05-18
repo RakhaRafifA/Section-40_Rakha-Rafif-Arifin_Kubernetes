@@ -3,8 +3,8 @@ package com.rakharafifa.miniproject.controller;
 import java.util.List;
 
 import com.rakharafifa.miniproject.model.dto.ProductDto;
-import com.rakharafifa.miniproject.model.entity.Product;
-import com.rakharafifa.miniproject.service.ProductService;
+import com.rakharafifa.miniproject.model.entity.ProductEntity;
+import com.rakharafifa.miniproject.service.interfaces.ProductService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,8 +29,8 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Product>> getAllProduct(){
-        List<Product> products = productService.getAllProduct();
+    public ResponseEntity<List<ProductEntity>> getAllProduct(){
+        List<ProductEntity> products = productService.getAllProduct();
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
@@ -41,24 +41,24 @@ public class ProductController {
     }
 
     @GetMapping("/{product_id}")
-    public ResponseEntity<Product> getProductById(@PathVariable("product_id") Long product_id){
+    public ResponseEntity<ProductEntity> getProductById(@PathVariable("product_id") Long product_id){
         return new ResponseEntity<>(productService.getProductById(product_id), HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<Product> createProduct(@RequestBody Product product){
+    public ResponseEntity<ProductEntity> createProduct(@RequestBody ProductEntity product){
         productService.createProduct(product);
         return new ResponseEntity<>(product, HttpStatus.OK);
     }
 
     @PutMapping("/{product_id}")
-    public ResponseEntity<Product> updateProduct(@PathVariable("product_id") Long product_id, @RequestBody Product product){
+    public ResponseEntity<ProductEntity> updateProduct(@PathVariable("product_id") Long product_id, @RequestBody ProductEntity product){
         productService.updateProduct(product_id, product);
         return new ResponseEntity<>(productService.getProductById(product_id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{product_id}")
-    public ResponseEntity<Product> deleteProduct(@PathVariable("product_id") Long product_id){
+    public ResponseEntity<ProductEntity> deleteProduct(@PathVariable("product_id") Long product_id){
         productService.deleteProduct(product_id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

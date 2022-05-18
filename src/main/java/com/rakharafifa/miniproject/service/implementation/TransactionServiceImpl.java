@@ -1,11 +1,12 @@
-package com.rakharafifa.miniproject.service;
+package com.rakharafifa.miniproject.service.implementation;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.rakharafifa.miniproject.model.dto.TransactionDto;
-import com.rakharafifa.miniproject.model.entity.Transaction;
+import com.rakharafifa.miniproject.model.entity.TransactionEntity;
 import com.rakharafifa.miniproject.repository.TransactionRepository;
+import com.rakharafifa.miniproject.service.interfaces.TransactionService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,15 +21,15 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public List<Transaction> getAllTransaction() {
-        List<Transaction> transactions = new ArrayList<>();
+    public List<TransactionEntity> getAllTransaction() {
+        List<TransactionEntity> transactions = new ArrayList<>();
         transactionRepository.findAll().forEach(transactions::add);
         return transactions;
     }
 
     @Override
     public List<TransactionDto> getAllTransactionDto() {
-        List<Transaction> transactions = transactionRepository.findAll();
+        List<TransactionEntity> transactions = transactionRepository.findAll();
         List<TransactionDto> transactionDtos = new ArrayList<>();
         
         transactions.forEach(isi ->{
@@ -43,18 +44,18 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public Transaction getTransactionById(Long transaction_id) {
+    public TransactionEntity getTransactionById(Long transaction_id) {
         return transactionRepository.findById(transaction_id).get();
     }
 
     @Override
-    public void createTransaction(Transaction transaction) {
+    public void createTransaction(TransactionEntity transaction) {
         transactionRepository.save(transaction);
     }
 
     @Override
-    public void updateTransaction(Long transaction_id, Transaction transaction) {
-        Transaction transaction2 = transactionRepository.findById(transaction_id).get();
+    public void updateTransaction(Long transaction_id, TransactionEntity transaction) {
+        TransactionEntity transaction2 = transactionRepository.findById(transaction_id).get();
         System.out.println(transaction2.toString());
         transaction2.setPrice(transaction.getPrice());
         transaction2.setTotal_price(transaction.getTotal_price());

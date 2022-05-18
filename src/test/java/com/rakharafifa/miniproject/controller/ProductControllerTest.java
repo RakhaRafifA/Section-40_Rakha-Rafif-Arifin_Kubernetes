@@ -3,9 +3,9 @@ package com.rakharafifa.miniproject.controller;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.rakharafifa.miniproject.model.entity.Product;
+import com.rakharafifa.miniproject.model.entity.ProductEntity;
 import com.rakharafifa.miniproject.repository.ProductRepository;
-import com.rakharafifa.miniproject.service.ProductService;
+import com.rakharafifa.miniproject.service.interfaces.ProductService;
 
 import org.json.JSONObject;
 import org.junit.jupiter.api.DisplayName;
@@ -67,7 +67,7 @@ public class ProductControllerTest {
     @Test
     @DisplayName("Post Product With Correct Data")
     public void postProductWithData() throws Exception{
-        Product product = new Product();
+        ProductEntity product = new ProductEntity();
         product.setProduct_id(1L);
         product.setName("Chiki");
         product.setDescription("Makanan Ringan");
@@ -126,7 +126,7 @@ public class ProductControllerTest {
     @Test
     @DisplayName("Update Product")
     public void updateProduct() throws Exception{
-        Product product = new Product();
+        ProductEntity product = new ProductEntity();
         product.setName("Rendang");
         product.setDescription("Makanan Berat");
         product.setPrice(15000L);

@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.rakharafifa.miniproject.model.entity.User;
+import com.rakharafifa.miniproject.model.entity.UserEntity;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
@@ -28,7 +28,7 @@ public class JwtTokenProvider {
     private Long expiration = 1000L * 60 * 60;
 
     public String generateToken(Authentication authentication){
-        final User user = (User) authentication.getPrincipal();
+        final UserEntity user = (UserEntity) authentication.getPrincipal();
 
         Date now = new Date(System.currentTimeMillis());
         Date expiryDate = new Date(now.getTime() + expiration);

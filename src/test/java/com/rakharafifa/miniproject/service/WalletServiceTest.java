@@ -8,8 +8,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import com.rakharafifa.miniproject.model.entity.Wallet;
+import com.rakharafifa.miniproject.model.entity.WalletEntity;
 import com.rakharafifa.miniproject.repository.WalletRepository;
+import com.rakharafifa.miniproject.service.implementation.WalletServiceImpl;
 
 import org.jeasy.random.EasyRandom;
 import org.junit.jupiter.api.Test;
@@ -30,7 +31,7 @@ public class WalletServiceTest {
 
     @Test
     void findAllWallet(){
-        List<Wallet> wallets = EASY_RANDOM.objects(Wallet.class, 2)
+        List<WalletEntity> wallets = EASY_RANDOM.objects(WalletEntity.class, 2)
         .collect(Collectors.toList());
 
         when(repository.findAll()).thenReturn(wallets);
@@ -40,7 +41,7 @@ public class WalletServiceTest {
 
     @Test
     void findWalletById(){
-        Wallet wallet = EASY_RANDOM.nextObject(Wallet.class);
+        WalletEntity wallet = EASY_RANDOM.nextObject(WalletEntity.class);
         System.out.println(wallet);
 
         when(repository.findById(wallet.getWallet_id())).thenReturn(Optional.of(wallet));
@@ -60,7 +61,7 @@ public class WalletServiceTest {
 
     @Test
     public void deleteWalletById(){
-        Wallet wallet = EASY_RANDOM.nextObject(Wallet.class);
+        WalletEntity wallet = EASY_RANDOM.nextObject(WalletEntity.class);
 
         service.deleteWallet(wallet.getWallet_id());
         verify(repository).deleteById(wallet.getWallet_id());
@@ -68,8 +69,8 @@ public class WalletServiceTest {
 
     @Test
     public void whenGivenId_shouldUpdateUser_ifFound() {
-        Wallet wallet = EASY_RANDOM.nextObject(Wallet.class);
-        Wallet newWallet = new Wallet();
+        WalletEntity wallet = EASY_RANDOM.nextObject(WalletEntity.class);
+        WalletEntity newWallet = new WalletEntity();
         newWallet.setName("Baru");
 
         when(repository.findById(wallet.getWallet_id())).thenReturn(Optional.of(wallet));

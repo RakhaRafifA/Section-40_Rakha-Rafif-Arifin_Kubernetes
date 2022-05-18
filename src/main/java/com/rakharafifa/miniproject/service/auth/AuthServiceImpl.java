@@ -1,6 +1,6 @@
-package com.rakharafifa.miniproject.service;
+package com.rakharafifa.miniproject.service.auth;
 
-import com.rakharafifa.miniproject.model.entity.User;
+import com.rakharafifa.miniproject.model.entity.UserEntity;
 import com.rakharafifa.miniproject.model.payload.TokenResponse;
 import com.rakharafifa.miniproject.model.payload.UsernamePassword;
 import com.rakharafifa.miniproject.repository.UserRepository;
@@ -27,8 +27,8 @@ public class AuthServiceImpl implements AuthService {
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    public User register(UsernamePassword req) {
-        User user = new User();
+    public UserEntity register(UsernamePassword req) {
+        UserEntity user = new UserEntity();
         user.setUsername(req.getUsername());
         user.setPassword(passwordEncoder.encode(req.getPassword()));
         user.setName(req.getName());

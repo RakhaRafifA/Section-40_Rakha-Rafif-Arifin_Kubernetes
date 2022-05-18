@@ -3,9 +3,9 @@ package com.rakharafifa.miniproject.controller;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.rakharafifa.miniproject.model.entity.Cart;
+import com.rakharafifa.miniproject.model.entity.CartEntity;
 import com.rakharafifa.miniproject.repository.CartRepository;
-import com.rakharafifa.miniproject.service.CartService;
+import com.rakharafifa.miniproject.service.interfaces.CartService;
 
 import org.json.JSONObject;
 import org.junit.jupiter.api.DisplayName;
@@ -67,7 +67,7 @@ public class CartControllerTest {
     @Test
     @DisplayName("Post Cart With Correct Data")
     public void postCartWithData() throws Exception{
-        Cart cart = new Cart();
+        CartEntity cart = new CartEntity();
         cart.setCart_id(1L);
         cart.setTotal_price(100000L);
         cart.setQuantity(5L);
@@ -122,7 +122,7 @@ public class CartControllerTest {
     @Test
     @DisplayName("Update Cart")
     public void updateCart() throws Exception{
-        Cart cart = new Cart();
+        CartEntity cart = new CartEntity();
         cart.setTotal_price(150000L);
         cart.setQuantity(7L);
 

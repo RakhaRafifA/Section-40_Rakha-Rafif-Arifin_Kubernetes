@@ -1,11 +1,11 @@
 package com.rakharafifa.miniproject.repository;
 
-import com.rakharafifa.miniproject.model.entity.User;
+import com.rakharafifa.miniproject.model.entity.UserEntity;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
-    User getDistinctTopByUsername(String username);
+public interface UserRepository extends JpaRepository<UserEntity, Long> {
+    UserEntity getDistinctTopByUsername(String username);
 }

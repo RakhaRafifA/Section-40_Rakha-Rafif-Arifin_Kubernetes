@@ -3,8 +3,8 @@ package com.rakharafifa.miniproject.controller;
 import java.util.List;
 
 import com.rakharafifa.miniproject.model.dto.CartDto;
-import com.rakharafifa.miniproject.model.entity.Cart;
-import com.rakharafifa.miniproject.service.CartService;
+import com.rakharafifa.miniproject.model.entity.CartEntity;
+import com.rakharafifa.miniproject.service.interfaces.CartService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,8 +29,8 @@ public class CartController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Cart>> getAllCart(){
-        List<Cart> carts = cartService.getAllCart();
+    public ResponseEntity<List<CartEntity>> getAllCart(){
+        List<CartEntity> carts = cartService.getAllCart();
         return new ResponseEntity<>(carts, HttpStatus.OK);
     }
 
@@ -41,24 +41,24 @@ public class CartController {
     }
 
     @GetMapping("/{cart_id}")
-    public ResponseEntity<Cart> getCartById(@PathVariable("cart_id") Long cart_id){
+    public ResponseEntity<CartEntity> getCartById(@PathVariable("cart_id") Long cart_id){
         return new ResponseEntity<>(cartService.getCartById(cart_id), HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<Cart> createCart(@RequestBody Cart cart){
+    public ResponseEntity<CartEntity> createCart(@RequestBody CartEntity cart){
         cartService.createCart(cart);
         return new ResponseEntity<>(cart, HttpStatus.OK);
     }
 
     @PutMapping("/{cart_id}")
-    public ResponseEntity<Cart> updateCart(@PathVariable("cart_id") Long cart_id, @RequestBody Cart cart){
+    public ResponseEntity<CartEntity> updateCart(@PathVariable("cart_id") Long cart_id, @RequestBody CartEntity cart){
         cartService.updateCart(cart_id, cart);
         return new ResponseEntity<>(cartService.getCartById(cart_id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{cart_id}")
-    public ResponseEntity<Cart> deleteCart(@PathVariable("cart_id") Long cart_id){
+    public ResponseEntity<CartEntity> deleteCart(@PathVariable("cart_id") Long cart_id){
         cartService.deleteCart(cart_id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

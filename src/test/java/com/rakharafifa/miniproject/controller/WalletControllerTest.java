@@ -3,9 +3,9 @@ package com.rakharafifa.miniproject.controller;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.rakharafifa.miniproject.model.entity.Wallet;
+import com.rakharafifa.miniproject.model.entity.WalletEntity;
 import com.rakharafifa.miniproject.repository.WalletRepository;
-import com.rakharafifa.miniproject.service.WalletService;
+import com.rakharafifa.miniproject.service.interfaces.WalletService;
 
 import org.json.JSONObject;
 import org.junit.jupiter.api.DisplayName;
@@ -67,7 +67,7 @@ public class WalletControllerTest {
     @Test
     @DisplayName("Post wallet With Correct Data")
     public void postwalletWithData() throws Exception{
-        Wallet wallet = new Wallet();
+        WalletEntity wallet = new WalletEntity();
         wallet.setWallet_id(1L);
         wallet.setName("Dompet Rakha");
         wallet.setAmount(500000L);
@@ -122,7 +122,7 @@ public class WalletControllerTest {
     @Test
     @DisplayName("Update wallet")
     public void updatewallet() throws Exception{
-        Wallet wallet = new Wallet();
+        WalletEntity wallet = new WalletEntity();
         wallet.setName("Dompet Rakha");
         wallet.setAmount(500000L);
 

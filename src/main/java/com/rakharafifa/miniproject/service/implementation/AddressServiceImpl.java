@@ -1,11 +1,12 @@
-package com.rakharafifa.miniproject.service;
+package com.rakharafifa.miniproject.service.implementation;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.rakharafifa.miniproject.model.dto.AddressDto;
-import com.rakharafifa.miniproject.model.entity.Address;
+import com.rakharafifa.miniproject.model.entity.AddressEntity;
 import com.rakharafifa.miniproject.repository.AddressRepository;
+import com.rakharafifa.miniproject.service.interfaces.AddressService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,15 +21,15 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public List<Address> getAllAddress() {
-        List<Address> addresss = new ArrayList<>();
+    public List<AddressEntity> getAllAddress() {
+        List<AddressEntity> addresss = new ArrayList<>();
         addressRepository.findAll().forEach(addresss::add);
         return addresss;
     }
 
     @Override
     public List<AddressDto> getAllAddressDto() {
-        List<Address> addresss = addressRepository.findAll();
+        List<AddressEntity> addresss = addressRepository.findAll();
         List<AddressDto> addressDtos = new ArrayList<>();
 
         addresss.forEach(isi ->{
@@ -43,18 +44,18 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public Address getAddressById(Long address_id) {
+    public AddressEntity getAddressById(Long address_id) {
         return addressRepository.findById(address_id).get();
     }
 
     @Override
-    public void createAddress(Address address) {
+    public void createAddress(AddressEntity address) {
         addressRepository.save(address);
     }
 
     @Override
-    public void updateAddress(Long address_id, Address address) {
-        Address address2 = addressRepository.findById(address_id).get();
+    public void updateAddress(Long address_id, AddressEntity address) {
+        AddressEntity address2 = addressRepository.findById(address_id).get();
         System.out.println(address2.toString());
         address2.setProvince(address.getProvince());
         address2.setCity(address.getCity());

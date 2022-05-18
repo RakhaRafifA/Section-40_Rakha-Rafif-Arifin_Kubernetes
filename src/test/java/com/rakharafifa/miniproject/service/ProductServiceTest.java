@@ -8,8 +8,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import com.rakharafifa.miniproject.model.entity.Product;
+import com.rakharafifa.miniproject.model.entity.ProductEntity;
 import com.rakharafifa.miniproject.repository.ProductRepository;
+import com.rakharafifa.miniproject.service.implementation.ProductServiceImpl;
 
 import org.jeasy.random.EasyRandom;
 import org.junit.jupiter.api.Test;
@@ -30,7 +31,7 @@ public class ProductServiceTest {
 
     @Test
     void findAllProduct(){
-        List<Product> products = EASY_RANDOM.objects(Product.class, 2)
+        List<ProductEntity> products = EASY_RANDOM.objects(ProductEntity.class, 2)
         .collect(Collectors.toList());
 
         when(repository.findAll()).thenReturn(products);
@@ -40,7 +41,7 @@ public class ProductServiceTest {
 
     @Test
     void findProductById(){
-        Product product = EASY_RANDOM.nextObject(Product.class);
+        ProductEntity product = EASY_RANDOM.nextObject(ProductEntity.class);
         System.out.println(product);
 
         when(repository.findById(product.getProduct_id())).thenReturn(Optional.of(product));
@@ -60,7 +61,7 @@ public class ProductServiceTest {
 
     @Test
     public void deleteProductById(){
-        Product product = EASY_RANDOM.nextObject(Product.class);
+        ProductEntity product = EASY_RANDOM.nextObject(ProductEntity.class);
 
         service.deleteProduct(product.getProduct_id());
         verify(repository).deleteById(product.getProduct_id());
@@ -68,8 +69,8 @@ public class ProductServiceTest {
 
     @Test
     public void whenGivenId_shouldUpdateUser_ifFound() {
-        Product product = EASY_RANDOM.nextObject(Product.class);
-        Product newProduct = new Product();
+        ProductEntity product = EASY_RANDOM.nextObject(ProductEntity.class);
+        ProductEntity newProduct = new ProductEntity();
         newProduct.setName("Baru");
 
         when(repository.findById(product.getProduct_id())).thenReturn(Optional.of(product));

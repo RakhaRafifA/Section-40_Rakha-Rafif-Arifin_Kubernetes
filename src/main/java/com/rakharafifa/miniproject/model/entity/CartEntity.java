@@ -20,20 +20,24 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Address {
+public class CartEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long address_id;
-    private String city;
-    private String province;
-    private Long post;
-    private String detail;
+    private Long cart_id;
+    private Long total_price;
+    private Long quantity;
+
     @CreationTimestamp
     private Instant created_at;
+    
     @UpdateTimestamp
     private Instant updated_at;
 
     @ManyToOne
+    @JoinColumn(name = "product_id", nullable =  false)
+    private ProductEntity product;
+
+    @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private UserEntity user;
 }

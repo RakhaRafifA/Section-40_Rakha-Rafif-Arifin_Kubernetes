@@ -20,24 +20,18 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Transaction {
+public class WalletEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long transaction_id;
-    private Long price;
-    private Long total_price;
-
+    private Long wallet_id;
+    private String name;
+    private Long amount;
     @CreationTimestamp
     private Instant created_at;
-    
     @UpdateTimestamp
     private Instant updated_at;
 
     @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
-
-    @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private UserEntity user;
 }

@@ -3,8 +3,8 @@ package com.rakharafifa.miniproject.controller;
 import java.util.List;
 
 import com.rakharafifa.miniproject.model.dto.WalletDto;
-import com.rakharafifa.miniproject.model.entity.Wallet;
-import com.rakharafifa.miniproject.service.WalletService;
+import com.rakharafifa.miniproject.model.entity.WalletEntity;
+import com.rakharafifa.miniproject.service.interfaces.WalletService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,8 +29,8 @@ public class WalletController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Wallet>> getAllWallet(){
-        List<Wallet> wallets = walletService.getAllWallet();
+    public ResponseEntity<List<WalletEntity>> getAllWallet(){
+        List<WalletEntity> wallets = walletService.getAllWallet();
         return new ResponseEntity<>(wallets, HttpStatus.OK);
     }
 
@@ -41,24 +41,24 @@ public class WalletController {
     }
 
     @GetMapping("/{wallet_id}")
-    public ResponseEntity<Wallet> getWalletById(@PathVariable("wallet_id") Long wallet_id){
+    public ResponseEntity<WalletEntity> getWalletById(@PathVariable("wallet_id") Long wallet_id){
         return new ResponseEntity<>(walletService.getWalletById(wallet_id), HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<Wallet> createWallet(@RequestBody Wallet wallet){
+    public ResponseEntity<WalletEntity> createWallet(@RequestBody WalletEntity wallet){
         walletService.createWallet(wallet);
         return new ResponseEntity<>(wallet, HttpStatus.OK);
     }
 
     @PutMapping("/{wallet_id}")
-    public ResponseEntity<Wallet> updateWallet(@PathVariable("wallet_id") Long wallet_id, @RequestBody Wallet wallet){
+    public ResponseEntity<WalletEntity> updateWallet(@PathVariable("wallet_id") Long wallet_id, @RequestBody WalletEntity wallet){
         walletService.updateWallet(wallet_id, wallet);
         return new ResponseEntity<>(walletService.getWalletById(wallet_id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{wallet_id}")
-    public ResponseEntity<Wallet> deleteWallet(@PathVariable("wallet_id") Long wallet_id){
+    public ResponseEntity<WalletEntity> deleteWallet(@PathVariable("wallet_id") Long wallet_id){
         walletService.deleteWallet(wallet_id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

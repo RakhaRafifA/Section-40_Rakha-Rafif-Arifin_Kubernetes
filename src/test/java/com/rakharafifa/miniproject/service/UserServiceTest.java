@@ -8,8 +8,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import com.rakharafifa.miniproject.model.entity.User;
+import com.rakharafifa.miniproject.model.entity.UserEntity;
 import com.rakharafifa.miniproject.repository.UserRepository;
+import com.rakharafifa.miniproject.service.implementation.UserServiceImpl;
 
 import org.jeasy.random.EasyRandom;
 import org.junit.jupiter.api.Test;
@@ -30,7 +31,7 @@ public class UserServiceTest {
     
     @Test
     void findAllUser(){
-        List<User> users = EASY_RANDOM.objects(User.class, 2)
+        List<UserEntity> users = EASY_RANDOM.objects(UserEntity.class, 2)
         .collect(Collectors.toList());
 
         when(repository.findAll()).thenReturn(users);
@@ -40,7 +41,7 @@ public class UserServiceTest {
 
     @Test
     void findUserById(){
-        User user = new User();
+        UserEntity user = new UserEntity();
         user.setUser_id(1L);
         user.setName("Rakha");
         user.setUsername("rakha");
@@ -68,7 +69,7 @@ public class UserServiceTest {
 
     @Test
     public void deleteUserById(){
-        User user = EASY_RANDOM.nextObject(User.class);
+        UserEntity user = EASY_RANDOM.nextObject(UserEntity.class);
 
         service.deleteUser(user.getUser_id());
         verify(repository).deleteById(user.getUser_id());
@@ -76,13 +77,13 @@ public class UserServiceTest {
 
     @Test
     public void whenGivenId_shouldUpdateUser_ifFound() {
-        User user = new User();
+        UserEntity user = new UserEntity();
         user.setUser_id(1L);
         user.setName("Rakha");
         user.setUsername("rakha");
         user.setPassword("password");
         
-        User newUser = new User();
+        UserEntity newUser = new UserEntity();
         newUser.setName("Baru");
 
         when(repository.findById(user.getUser_id())).thenReturn(Optional.of(user));

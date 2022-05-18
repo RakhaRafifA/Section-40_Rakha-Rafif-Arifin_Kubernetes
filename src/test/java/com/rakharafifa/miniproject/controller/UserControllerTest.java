@@ -3,9 +3,9 @@ package com.rakharafifa.miniproject.controller;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.rakharafifa.miniproject.model.entity.User;
+import com.rakharafifa.miniproject.model.entity.UserEntity;
 import com.rakharafifa.miniproject.repository.UserRepository;
-import com.rakharafifa.miniproject.service.UserService;
+import com.rakharafifa.miniproject.service.interfaces.UserService;
 
 import org.json.JSONObject;
 import org.junit.jupiter.api.DisplayName;
@@ -67,7 +67,7 @@ public class UserControllerTest {
     @Test
     @DisplayName("Post User With Correct Data")
     public void postUserWithData() throws Exception{
-        User user = new User();
+        UserEntity user = new UserEntity();
         user.setUser_id(1L);
         user.setName("Rakha");
         user.setUsername("rakha");
@@ -124,7 +124,7 @@ public class UserControllerTest {
     @Test
     @DisplayName("Update User")
     public void updateUser() throws Exception{
-        User user = new User();
+        UserEntity user = new UserEntity();
         user.setName("Rakha");
         user.setUsername("rakha");
         user.setPassword("password");

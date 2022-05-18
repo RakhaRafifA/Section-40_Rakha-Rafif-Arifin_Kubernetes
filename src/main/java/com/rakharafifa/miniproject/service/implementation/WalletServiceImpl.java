@@ -1,11 +1,12 @@
-package com.rakharafifa.miniproject.service;
+package com.rakharafifa.miniproject.service.implementation;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.rakharafifa.miniproject.model.dto.WalletDto;
-import com.rakharafifa.miniproject.model.entity.Wallet;
+import com.rakharafifa.miniproject.model.entity.WalletEntity;
 import com.rakharafifa.miniproject.repository.WalletRepository;
+import com.rakharafifa.miniproject.service.interfaces.WalletService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,15 +21,15 @@ public class WalletServiceImpl implements WalletService {
     }
 
     @Override
-    public List<Wallet> getAllWallet() {
-        List<Wallet> wallets = new ArrayList<>();
+    public List<WalletEntity> getAllWallet() {
+        List<WalletEntity> wallets = new ArrayList<>();
         walletRepository.findAll().forEach(wallets::add);
         return wallets;
     }
 
     @Override
     public List<WalletDto> getAllWalletDto() {
-        List<Wallet> wallets = walletRepository.findAll();
+        List<WalletEntity> wallets = walletRepository.findAll();
         List<WalletDto> walletDtos = new ArrayList<>();
         
         wallets.forEach(isi ->{
@@ -43,18 +44,18 @@ public class WalletServiceImpl implements WalletService {
     }
 
     @Override
-    public Wallet getWalletById(Long wallet_id) {
+    public WalletEntity getWalletById(Long wallet_id) {
         return walletRepository.findById(wallet_id).get();
     }
 
     @Override
-    public void createWallet(Wallet wallet) {
+    public void createWallet(WalletEntity wallet) {
         walletRepository.save(wallet);
     }
 
     @Override
-    public void updateWallet(Long wallet_id, Wallet wallet) {
-        Wallet wallet2 = walletRepository.findById(wallet_id).get();
+    public void updateWallet(Long wallet_id, WalletEntity wallet) {
+        WalletEntity wallet2 = walletRepository.findById(wallet_id).get();
         System.out.println(wallet2.toString());
 
         wallet2.setName(wallet.getName());

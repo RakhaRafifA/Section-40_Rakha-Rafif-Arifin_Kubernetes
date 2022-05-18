@@ -3,8 +3,8 @@ package com.rakharafifa.miniproject.controller;
 import java.util.List;
 
 import com.rakharafifa.miniproject.model.dto.AddressDto;
-import com.rakharafifa.miniproject.model.entity.Address;
-import com.rakharafifa.miniproject.service.AddressService;
+import com.rakharafifa.miniproject.model.entity.AddressEntity;
+import com.rakharafifa.miniproject.service.interfaces.AddressService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,8 +29,8 @@ public class AddressController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Address>> getAllAddress(){
-        List<Address> addresss = addressService.getAllAddress();
+    public ResponseEntity<List<AddressEntity>> getAllAddress(){
+        List<AddressEntity> addresss = addressService.getAllAddress();
         return new ResponseEntity<>(addresss, HttpStatus.OK);
     }
 
@@ -41,24 +41,24 @@ public class AddressController {
     }
 
     @GetMapping("/{address_id}")
-    public ResponseEntity<Address> getAddressById(@PathVariable("address_id") Long address_id){
+    public ResponseEntity<AddressEntity> getAddressById(@PathVariable("address_id") Long address_id){
         return new ResponseEntity<>(addressService.getAddressById(address_id), HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<Address> createAddress(@RequestBody Address address){
+    public ResponseEntity<AddressEntity> createAddress(@RequestBody AddressEntity address){
         addressService.createAddress(address);
         return new ResponseEntity<>(address, HttpStatus.OK);
     }
 
     @PutMapping("/{address_id}")
-    public ResponseEntity<Address> updateAddress(@PathVariable("address_id") Long address_id, @RequestBody Address address){
+    public ResponseEntity<AddressEntity> updateAddress(@PathVariable("address_id") Long address_id, @RequestBody AddressEntity address){
         addressService.updateAddress(address_id, address);
         return new ResponseEntity<>(addressService.getAddressById(address_id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{address_id}")
-    public ResponseEntity<Address> deleteAddress(@PathVariable("address_id") Long address_id){
+    public ResponseEntity<AddressEntity> deleteAddress(@PathVariable("address_id") Long address_id){
         addressService.deleteAddress(address_id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

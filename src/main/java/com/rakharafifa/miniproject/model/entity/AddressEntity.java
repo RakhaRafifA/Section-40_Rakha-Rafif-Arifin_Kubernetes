@@ -20,12 +20,14 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Wallet {
+public class AddressEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long wallet_id;
-    private String name;
-    private Long amount;
+    private Long address_id;
+    private String city;
+    private String province;
+    private Long post;
+    private String detail;
     @CreationTimestamp
     private Instant created_at;
     @UpdateTimestamp
@@ -33,5 +35,5 @@ public class Wallet {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private UserEntity user;
 }

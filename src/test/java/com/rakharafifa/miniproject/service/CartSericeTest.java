@@ -8,8 +8,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import com.rakharafifa.miniproject.model.entity.Cart;
+import com.rakharafifa.miniproject.model.entity.CartEntity;
 import com.rakharafifa.miniproject.repository.CartRepository;
+import com.rakharafifa.miniproject.service.implementation.CartServiceImpl;
 
 import org.jeasy.random.EasyRandom;
 import org.junit.jupiter.api.Test;
@@ -30,7 +31,7 @@ public class CartSericeTest {
 
     @Test
     void findAllCart(){
-        List<Cart> carts = EASY_RANDOM.objects(Cart.class, 2)
+        List<CartEntity> carts = EASY_RANDOM.objects(CartEntity.class, 2)
         .collect(Collectors.toList());
 
         when(repository.findAll()).thenReturn(carts);
@@ -40,7 +41,7 @@ public class CartSericeTest {
 
     @Test
     void findCartById(){
-        Cart cart = EASY_RANDOM.nextObject(Cart.class);
+        CartEntity cart = EASY_RANDOM.nextObject(CartEntity.class);
         System.out.println(cart);
 
         when(repository.findById(cart.getCart_id())).thenReturn(Optional.of(cart));
@@ -60,7 +61,7 @@ public class CartSericeTest {
 
     @Test
     public void deleteCartById(){
-        Cart cart = EASY_RANDOM.nextObject(Cart.class);
+        CartEntity cart = EASY_RANDOM.nextObject(CartEntity.class);
 
         service.deleteCart(cart.getCart_id());
         verify(repository).deleteById(cart.getCart_id());
@@ -68,8 +69,8 @@ public class CartSericeTest {
 
     @Test
     public void whenGivenId_shouldUpdateUser_ifFound() {
-        Cart cart = EASY_RANDOM.nextObject(Cart.class);
-        Cart newCart = new Cart();
+        CartEntity cart = EASY_RANDOM.nextObject(CartEntity.class);
+        CartEntity newCart = new CartEntity();
         newCart.setQuantity(20L);
 
         when(repository.findById(cart.getCart_id())).thenReturn(Optional.of(cart));

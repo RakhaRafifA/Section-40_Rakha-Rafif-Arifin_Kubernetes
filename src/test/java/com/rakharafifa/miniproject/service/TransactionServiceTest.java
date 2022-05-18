@@ -8,8 +8,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import com.rakharafifa.miniproject.model.entity.Transaction;
+import com.rakharafifa.miniproject.model.entity.TransactionEntity;
 import com.rakharafifa.miniproject.repository.TransactionRepository;
+import com.rakharafifa.miniproject.service.implementation.TransactionServiceImpl;
 
 import org.jeasy.random.EasyRandom;
 import org.junit.jupiter.api.Test;
@@ -30,7 +31,7 @@ public class TransactionServiceTest {
 
     @Test
     void findAllTransaction(){
-        List<Transaction> transactions = EASY_RANDOM.objects(Transaction.class, 2)
+        List<TransactionEntity> transactions = EASY_RANDOM.objects(TransactionEntity.class, 2)
         .collect(Collectors.toList());
 
         when(repository.findAll()).thenReturn(transactions);
@@ -40,7 +41,7 @@ public class TransactionServiceTest {
 
     @Test
     void findTransactionById(){
-        Transaction transaction = new Transaction();
+        TransactionEntity transaction = new TransactionEntity();
         transaction.setTransaction_id(1L);
         transaction.setPrice(20000L);
         transaction.setTotal_price(50000L);
@@ -67,7 +68,7 @@ public class TransactionServiceTest {
 
     @Test
     public void deleteTransactionById(){
-        Transaction transaction = EASY_RANDOM.nextObject(Transaction.class);
+        TransactionEntity transaction = EASY_RANDOM.nextObject(TransactionEntity.class);
 
         service.deleteTransaction(transaction.getTransaction_id());
         verify(repository).deleteById(transaction.getTransaction_id());
@@ -75,12 +76,12 @@ public class TransactionServiceTest {
 
     @Test
     public void whenGivenId_shouldUpdateUser_ifFound() {
-        Transaction transaction = new Transaction();
+        TransactionEntity transaction = new TransactionEntity();
         transaction.setTransaction_id(1L);
         transaction.setPrice(20000L);
         transaction.setTotal_price(50000L);
         
-        Transaction newTransaction = new Transaction();
+        TransactionEntity newTransaction = new TransactionEntity();
         newTransaction.setPrice(50000L);
 
         when(repository.findById(transaction.getTransaction_id())).thenReturn(Optional.of(transaction));

@@ -8,8 +8,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import com.rakharafifa.miniproject.model.entity.Address;
+import com.rakharafifa.miniproject.model.entity.AddressEntity;
 import com.rakharafifa.miniproject.repository.AddressRepository;
+import com.rakharafifa.miniproject.service.implementation.AddressServiceImpl;
 
 import org.jeasy.random.EasyRandom;
 import org.junit.jupiter.api.Test;
@@ -30,7 +31,7 @@ public class AddressServiceTest {
 
     @Test
     void findAllAddress(){
-        List<Address> addresss = EASY_RANDOM.objects(Address.class, 2)
+        List<AddressEntity> addresss = EASY_RANDOM.objects(AddressEntity.class, 2)
         .collect(Collectors.toList());
 
         when(repository.findAll()).thenReturn(addresss);
@@ -40,7 +41,7 @@ public class AddressServiceTest {
 
     @Test
     void findAddressById(){
-        Address address = EASY_RANDOM.nextObject(Address.class);
+        AddressEntity address = EASY_RANDOM.nextObject(AddressEntity.class);
         System.out.println(address);
 
         when(repository.findById(address.getAddress_id())).thenReturn(Optional.of(address));
@@ -60,7 +61,7 @@ public class AddressServiceTest {
 
     @Test
     public void deleteAddressById(){
-        Address address = EASY_RANDOM.nextObject(Address.class);
+        AddressEntity address = EASY_RANDOM.nextObject(AddressEntity.class);
 
         service.deleteAddress(address.getAddress_id());
         verify(repository).deleteById(address.getAddress_id());
@@ -68,8 +69,8 @@ public class AddressServiceTest {
 
     @Test
     public void whenGivenId_shouldUpdateUser_ifFound() {
-        Address address = EASY_RANDOM.nextObject(Address.class);
-        Address newAddress = new Address();
+        AddressEntity address = EASY_RANDOM.nextObject(AddressEntity.class);
+        AddressEntity newAddress = new AddressEntity();
         newAddress.setProvince("Baru");
 
         when(repository.findById(address.getAddress_id())).thenReturn(Optional.of(address));
