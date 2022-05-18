@@ -3,8 +3,7 @@ package com.rakharafifa.miniproject.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.rakharafifa.miniproject.model.dto_create.CreateProductDTO;
-import com.rakharafifa.miniproject.model.dto_get.ProductDto;
+import com.rakharafifa.miniproject.model.dto.ProductDto;
 import com.rakharafifa.miniproject.model.entity.Product;
 import com.rakharafifa.miniproject.repository.ProductRepository;
 
@@ -49,14 +48,14 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void createProductDto(CreateProductDTO createProductDTO) {
+    public void createProductDto(ProductDto productDto) {
         Product product = new Product();
 
-        product.setProduct_id(createProductDTO.getProduct_id());
-        product.setName(createProductDTO.getName());
-        product.setPrice(createProductDTO.getPrice());
-        product.setQuantity(createProductDTO.getQuantity());
-        product.setDescription(createProductDTO.getDescription());
+        product.setProduct_id(productDto.getProduct_id());
+        product.setName(productDto.getName());
+        product.setPrice(productDto.getPrice());
+        product.setQuantity(productDto.getQuantity());
+        product.setDescription(productDto.getDescription());
 
         productRepository.save(product);
     }

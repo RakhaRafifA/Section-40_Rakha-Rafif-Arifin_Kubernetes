@@ -3,10 +3,9 @@ package com.rakharafifa.miniproject.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.rakharafifa.miniproject.model.dto_create.CreateTransactionDTO;
-import com.rakharafifa.miniproject.model.dto_get.ProductDto;
-import com.rakharafifa.miniproject.model.dto_get.TransactionDto;
-import com.rakharafifa.miniproject.model.dto_get.UserDto;
+import com.rakharafifa.miniproject.model.dto.ProductDto;
+import com.rakharafifa.miniproject.model.dto.TransactionDto;
+import com.rakharafifa.miniproject.model.dto.UserDto;
 import com.rakharafifa.miniproject.model.entity.Product;
 import com.rakharafifa.miniproject.model.entity.Transaction;
 import com.rakharafifa.miniproject.model.entity.User;
@@ -65,16 +64,16 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public void createTransactionDto(CreateTransactionDTO createTransactionDTO) {
+    public void createTransactionDto(TransactionDto transactionDto) {
         Transaction transaction = new Transaction();
         Product product = new Product();
         User user = new User();
         
-        product.setProduct_id(createTransactionDTO.getProduct_id());
-        user.setUser_id(createTransactionDTO.getUser_id());
-        transaction.setTransaction_id(createTransactionDTO.getTransaction_id());
-        transaction.setPrice(createTransactionDTO.getPrice());
-        transaction.setTotal_price(createTransactionDTO.getTotal_price());
+        product.setProduct_id(transactionDto.getProduct_id());
+        user.setUser_id(transactionDto.getUser_id());
+        transaction.setTransaction_id(transactionDto.getTransaction_id());
+        transaction.setPrice(transactionDto.getPrice());
+        transaction.setTotal_price(transactionDto.getTotal_price());
 
         transactionRepository.save(transaction);
     }

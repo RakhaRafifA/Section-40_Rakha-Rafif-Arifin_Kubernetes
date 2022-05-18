@@ -2,8 +2,7 @@ package com.rakharafifa.miniproject.controller;
 
 import java.util.List;
 
-import com.rakharafifa.miniproject.model.dto_create.CreateAddressDTO;
-import com.rakharafifa.miniproject.model.dto_get.AddressDto;
+import com.rakharafifa.miniproject.model.dto.AddressDto;
 import com.rakharafifa.miniproject.model.entity.Address;
 import com.rakharafifa.miniproject.service.AddressService;
 
@@ -47,9 +46,9 @@ public class AddressController {
     }
 
     @PostMapping
-    public ResponseEntity<CreateAddressDTO> createAddress(@RequestBody CreateAddressDTO createAddressDTO){
-        addressService.createAddressDto(createAddressDTO);
-        return new ResponseEntity<>(createAddressDTO, HttpStatus.OK);
+    public ResponseEntity<AddressDto> createAddress(@RequestBody AddressDto addressDto){
+        addressService.createAddressDto(addressDto);
+        return new ResponseEntity<>(addressDto, HttpStatus.OK);
     }
 
     @PutMapping("/{address_id}")

@@ -2,8 +2,7 @@ package com.rakharafifa.miniproject.controller;
 
 import java.util.List;
 
-import com.rakharafifa.miniproject.model.dto_create.CreateWalletDTO;
-import com.rakharafifa.miniproject.model.dto_get.WalletDto;
+import com.rakharafifa.miniproject.model.dto.WalletDto;
 import com.rakharafifa.miniproject.model.entity.Wallet;
 import com.rakharafifa.miniproject.service.WalletService;
 
@@ -47,9 +46,9 @@ public class WalletController {
     }
 
     @PostMapping
-    public ResponseEntity<CreateWalletDTO> createWallet(@RequestBody CreateWalletDTO createWalletDTO){
-        walletService.createWalletDto(createWalletDTO);
-        return new ResponseEntity<>(createWalletDTO, HttpStatus.OK);
+    public ResponseEntity<WalletDto> createWallet(@RequestBody WalletDto walletDto){
+        walletService.createWalletDto(walletDto);
+        return new ResponseEntity<>(walletDto, HttpStatus.OK);
     }
 
     @PutMapping("/{wallet_id}")

@@ -31,7 +31,7 @@ public class AuthServiceImpl implements AuthService {
         User user = new User();
         user.setUsername(req.getUsername());
         user.setPassword(passwordEncoder.encode(req.getPassword()));
-        user.setName(user.getName());
+        user.setName(req.getName());
         return userRepository.save(user);
     }
     @Override

@@ -1,4 +1,4 @@
-package com.rakharafifa.miniproject.model.dto_get;
+package com.rakharafifa.miniproject.model.dto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,10 +7,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CartDto {
     private Long cart_id;
-    private Long product_id;
     private Long total_price;
     private Long quantity;
-    private UserDto userDto;
     private Long user_id;
+    private UserDto userDto;
+    private Long product_id;
     private ProductDto productDto;
 }

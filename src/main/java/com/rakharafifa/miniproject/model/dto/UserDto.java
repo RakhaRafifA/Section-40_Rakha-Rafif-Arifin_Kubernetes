@@ -1,4 +1,4 @@
-package com.rakharafifa.miniproject.model.dto_get;
+package com.rakharafifa.miniproject.model.dto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

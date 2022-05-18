@@ -3,8 +3,7 @@ package com.rakharafifa.miniproject.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.rakharafifa.miniproject.model.dto_create.CreateWalletDTO;
-import com.rakharafifa.miniproject.model.dto_get.WalletDto;
+import com.rakharafifa.miniproject.model.dto.WalletDto;
 import com.rakharafifa.miniproject.model.entity.User;
 import com.rakharafifa.miniproject.model.entity.Wallet;
 import com.rakharafifa.miniproject.repository.WalletRepository;
@@ -56,14 +55,14 @@ public class WalletServiceImpl implements WalletService {
     }
 
     @Override
-    public void createWalletDto(CreateWalletDTO createWalletDTO) {
+    public void createWalletDto(WalletDto walletDto) {
         Wallet wallet = new Wallet();
         User user = new User();
 
-        user.setUser_id(createWalletDTO.getUser_id());
-        wallet.setWallet_id(createWalletDTO.getWallet_id());
-        wallet.setName(createWalletDTO.getName());
-        wallet.setAmount(createWalletDTO.getAmount());
+        user.setUser_id(walletDto.getUser_id());
+        wallet.setWallet_id(walletDto.getWallet_id());
+        wallet.setName(walletDto.getName());
+        wallet.setAmount(walletDto.getAmount());
 
         walletRepository.save(wallet);
     }

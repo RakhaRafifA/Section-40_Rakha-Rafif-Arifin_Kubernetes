@@ -2,8 +2,7 @@ package com.rakharafifa.miniproject.controller;
 
 import java.util.List;
 
-import com.rakharafifa.miniproject.model.dto_create.CreateProductDTO;
-import com.rakharafifa.miniproject.model.dto_get.ProductDto;
+import com.rakharafifa.miniproject.model.dto.ProductDto;
 import com.rakharafifa.miniproject.model.entity.Product;
 import com.rakharafifa.miniproject.service.ProductService;
 
@@ -47,9 +46,9 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<CreateProductDTO> createProductDto(@RequestBody CreateProductDTO createProductDTO){
-        productService.createProductDto(createProductDTO);
-        return new ResponseEntity<>(createProductDTO, HttpStatus.OK);
+    public ResponseEntity<ProductDto> createProductDto(@RequestBody ProductDto productDto){
+        productService.createProductDto(productDto);
+        return new ResponseEntity<>(productDto, HttpStatus.OK);
     }
 
     @PutMapping("/{product_id}")

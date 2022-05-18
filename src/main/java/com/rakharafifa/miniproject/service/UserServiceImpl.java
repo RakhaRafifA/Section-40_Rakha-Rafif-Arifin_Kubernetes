@@ -3,8 +3,7 @@ package com.rakharafifa.miniproject.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.rakharafifa.miniproject.model.dto_create.CreateUserDTO;
-import com.rakharafifa.miniproject.model.dto_get.UserDto;
+import com.rakharafifa.miniproject.model.dto.UserDto;
 import com.rakharafifa.miniproject.model.entity.User;
 import com.rakharafifa.miniproject.repository.UserRepository;
 
@@ -62,11 +61,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void createUserDto(CreateUserDTO createUserDTO) {
+    public void createUserDto(UserDto userDto) {
         User user = new User();
 
-        user.setUser_id(createUserDTO.getUser_id());
-        user.setName(createUserDTO.getName());
+        user.setUser_id(userDto.getUser_id());
+        user.setName(userDto.getName());
 
         userRepository.save(user);
     }

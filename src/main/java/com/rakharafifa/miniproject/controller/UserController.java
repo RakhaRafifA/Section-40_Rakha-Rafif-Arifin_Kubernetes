@@ -2,8 +2,7 @@ package com.rakharafifa.miniproject.controller;
 
 import java.util.List;
 
-import com.rakharafifa.miniproject.model.dto_create.CreateUserDTO;
-import com.rakharafifa.miniproject.model.dto_get.UserDto;
+import com.rakharafifa.miniproject.model.dto.UserDto;
 import com.rakharafifa.miniproject.model.entity.User;
 import com.rakharafifa.miniproject.service.UserService;
 
@@ -47,9 +46,9 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<CreateUserDTO> createUserDto(@RequestBody CreateUserDTO createUserDTO){
-        userService.createUserDto(createUserDTO);
-        return new ResponseEntity<>(createUserDTO, HttpStatus.OK);
+    public ResponseEntity<UserDto> createUserDto(@RequestBody UserDto userDto){
+        userService.createUserDto(userDto);
+        return new ResponseEntity<>(userDto, HttpStatus.OK);
     }
 
     @PutMapping("/{user_id}")
