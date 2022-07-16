@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: remedial
+  labels:
+    app: remedial
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: remedial
+  template:
+    metadata:
+      labels:
+        app: remedial 
+    spec:
+      containers:
+      - name: remedial
+        image: remedial/gym:latest
+        ports:
+        - containerPort: 8080
+        resources:
+          limits:
+            cpu: 500m
+          requests:
+            cpu: 200m
+        
+        
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: remedial
+spec:
+  selector:
+    app: remedial
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
