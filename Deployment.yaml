@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: remedial
-        image: remedial/gym:latest
+        image: remedial:latest
         ports:
         - containerPort: 8080
         resources:

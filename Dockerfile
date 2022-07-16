@@ -1,7 +1,7 @@
 FROM openjdk:18-jdk-alpine
 
-ADD target/miniproject-rakharafifa.jar miniproject-rakharafifa.jar
+ADD target/remedial.jar remedial.jar
 
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar", "/miniproject-rakharafifa.jar"]
+ENTRYPOINT ["java", "-jar", "/remedial.jar"]

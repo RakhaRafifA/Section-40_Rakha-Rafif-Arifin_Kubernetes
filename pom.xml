@@ -151,7 +151,7 @@
 				</executions>
 			</plugin>
 		</plugins>
-		<finalName>miniproject-rakharafifa</finalName>
+		<finalName>remedial</finalName>
 	</build>
 
 </project>
