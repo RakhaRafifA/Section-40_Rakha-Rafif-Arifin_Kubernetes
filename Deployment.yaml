@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: remedial
+  name: nginx-deployment
   labels:
     app: remedial
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: remedial
+      app: nginx
   template:
     metadata:
       labels:
-        app: remedial 
+        app: nginx 
     spec:
       containers:
-      - name: remedial
-        image: rakhara104/remedial-kubernetes:latest
+      - name: nginx
+        image: nginx:1.14.2
         ports:
-        - containerPort: 8080
+        - containerPort: 80
